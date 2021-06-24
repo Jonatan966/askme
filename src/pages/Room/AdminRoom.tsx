@@ -1,7 +1,5 @@
 import { useHistory, useParams } from 'react-router-dom'
 
-import { Button } from '@components/Button'
-import { RoomCode } from '@components/RoomCode'
 import { Question } from '@components/Question'
 import { ConfirmModal } from '@components/Modal/ConfirmModal'
 
@@ -10,10 +8,10 @@ import { useRoom } from '@hooks/useRoom'
 import { useTheme } from '@hooks/useTheme'
 import { database } from '@services/firebase'
 
-import logoImg from '@assets/images/logo.svg'
 import deleteImg from '@assets/images/delete.svg'
 
 import './styles.scss'
+import { RoomHeader } from '@components/RoomHeader'
 
 type RoomParams = {
   id: string;
@@ -67,16 +65,10 @@ export function AdminRoomPage() {
         description='Tem certeza que você deseja encerrar esta sala?'
       />
 
-      <header>
-        <div className='content'>
-          <img src={logoImg} alt='Letmeask' />
-
-          <div>
-            <RoomCode roomCode={roomId} />
-            <Button isOutlined onClick={() => handleOpenConfirmEndRoomModal()}>Encerrar sala</Button>
-          </div>
-        </div>
-      </header>
+      <RoomHeader
+        roomId={roomId}
+        handleOpenConfirmEndRoomModal={handleOpenConfirmEndRoomModal}
+      />
 
       <main>
         <div className="room-title">
