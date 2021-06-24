@@ -1,17 +1,18 @@
 import Modal from 'react-modal'
 
+import { Button } from '@components/Button'
+import { ModalState } from '@hooks/useModal'
+
 import deleteImg from '@assets/images/delete.svg'
 
 import './styles.scss'
-import { Button } from '@components/Button'
-import { ModalState } from '@hooks/useModal'
 
 interface ConfirmModalProps {
   title: string;
   description: string;
   onConfirm: (aditionalData: any) => Promise<void>;
 
-  modalState: ModalState<string>;
+  modalState: ModalState<any>;
   handleCloseModal: () => void;
 }
 
