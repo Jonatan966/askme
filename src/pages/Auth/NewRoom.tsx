@@ -54,7 +54,7 @@ export function NewRoomPage() {
               value={roomName}
               onChange={event => setRoomName(event.target.value)}
             />
-            <Button type="submit">
+            <Button type="submit" disabled={!roomName}>
               Criar sala
             </Button>
           </form>
