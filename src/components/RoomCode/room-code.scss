@@ -1,6 +1,6 @@
 .room-code {
-  height: 40px;
-  border-radius: 8px;
+  height: 2.5rem;
+  border-radius: 0.5rem;
   overflow: hidden;
 
   background: var(--white);
@@ -22,9 +22,9 @@
     display: block;
     align-self: center;
     flex: 1;
-    padding: 0 16px 0 12px;
-    min-width: 240px;
-    font-size: 14px;
+    padding: 0 1rem 0 12px;
+    min-width: 17rem;
+    font-size: 0.875rem;
     font-weight: 500;
   }
 }
