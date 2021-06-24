@@ -12,9 +12,22 @@ type ThemeProps = {
 const ThemeContext = createContext({} as ThemeProps)
 
 export const ThemeProvider: FC = ({ children }) => {
-  const [currentTheme, setCurrentTheme] = useState<CurrentThemeProps>('dark')
+  const [currentTheme, setCurrentTheme] = useState<CurrentThemeProps>(() => {
+    const storagedCurrentTheme = localStorage.getItem('@letmeask:theme')
 
-  const toggleTheme = () => setCurrentTheme(currentTheme === 'dark' ? 'light' : 'dark')
+    if (!['dark', 'light'].includes(storagedCurrentTheme || '')) {
+      return 'light'
+    }
+
+    return storagedCurrentTheme as CurrentThemeProps
+  })
+
+  const toggleTheme = () => {
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark'
+    setCurrentTheme(newTheme)
+
+    localStorage.setItem('@letmeask:theme', newTheme)
+  }
 
   return (
     <ThemeContext.Provider value={{
