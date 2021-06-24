@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 import { Button } from '@components/Button'
 import { database } from '@services/firebase'
@@ -34,13 +35,12 @@ export function HomePage() {
     const roomRef = await database.ref(`rooms/${roomCode}`).get()
 
     if (!roomRef.exists()) {
-      // TODO: utilizar o toastify
-      alert('Room does not exists')
+      toast.error('Essa sala não existe')
       return
-    }
+    } 
 
     if (roomRef.val().endedAt) {
-      alert('Room already closed.')
+      toast.error('Essa sala já foi fechada')
       return
     }
 
@@ -72,7 +72,7 @@ export function HomePage() {
               onChange={event => setRoomCode(event.target.value)}
               value={roomCode}
             />
-            <Button type="submit">
+            <Button type="submit" disabled={!roomCode}>
               Entrar na sala
             </Button>
           </form>

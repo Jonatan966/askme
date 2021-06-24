@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { HomePage } from './pages/Auth'
@@ -10,6 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <Toaster />
         <Switch>
           <Route path='/' component={HomePage} exact />
           <Route path='/rooms/new' component={NewRoomPage} />
