@@ -1,11 +1,14 @@
 import { Toaster } from 'react-hot-toast'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Modal from 'react-modal'
 
 import { HomePage } from './pages/Auth'
 import { NewRoomPage } from './pages/Auth/NewRoom'
 import { AuthProvider } from './hooks/useAuth'
 import { RoomPage } from './pages/Room'
 import { AdminRoomPage } from './pages/Room/AdminRoom'
+
+Modal.setAppElement('#root')
 
 function App() {
   return (
