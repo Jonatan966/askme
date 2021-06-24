@@ -7,6 +7,7 @@ import { ConfirmModal } from '@components/Modal/ConfirmModal'
 
 import { useModal } from '@hooks/useModal'
 import { useRoom } from '@hooks/useRoom'
+import { useTheme } from '@hooks/useTheme'
 import { database } from '@services/firebase'
 
 import logoImg from '@assets/images/logo.svg'
@@ -34,6 +35,8 @@ export function AdminRoomPage() {
   
   const { title, questions } = useRoom(roomId)
 
+  const { currentTheme } = useTheme()
+
   async function handleConfirmDeleteQuestion(questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
   }
@@ -47,7 +50,7 @@ export function AdminRoomPage() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={currentTheme}>
       <ConfirmModal 
         modalState={confirmDeleteQuestionModalState}
         handleCloseModal={handleCloseConfirmDeleteQuestionModal}

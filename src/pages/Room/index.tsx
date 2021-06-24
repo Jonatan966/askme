@@ -11,6 +11,7 @@ import { database } from '@services/firebase'
 import logoImg from '@assets/images/logo.svg'
 
 import './styles.scss'
+import { useTheme } from '@hooks/useTheme'
 
 
 type RoomParams = {
@@ -23,6 +24,7 @@ export function RoomPage() {
   const [newQuestion, setNewQuestion] = useState('')
   
   const { title, questions } = useRoom(roomId)
+  const { currentTheme } = useTheme()
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -67,7 +69,7 @@ export function RoomPage() {
   }
 
   return (
-    <div id="page-room">
+    <div id="page-room" className={currentTheme}>
       <header>
         <div className='content'>
           <img src={logoImg} alt='Letmeask' />

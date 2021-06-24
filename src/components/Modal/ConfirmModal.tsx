@@ -2,6 +2,7 @@ import Modal from 'react-modal'
 
 import { Button } from '@components/Button'
 import { ModalState } from '@hooks/useModal'
+import { useTheme } from '@hooks/useTheme'
 
 import deleteImg from '@assets/images/delete.svg'
 
@@ -23,6 +24,8 @@ export function ConfirmModal({
   modalState,
   handleCloseModal
 }: ConfirmModalProps) {
+  const { currentTheme } = useTheme()
+
   async function handleConfirm() {
     await onConfirm(modalState.aditionalData)
     handleCloseModal()
@@ -33,7 +36,7 @@ export function ConfirmModal({
       isOpen={modalState.isOpen}
       onRequestClose={handleCloseModal}
       overlayClassName='modal-overlay'
-      className='modal-content confirm-modal'
+      className={`modal-content confirm-modal ${currentTheme}`}
     >
       <img src={deleteImg} alt='Lixeira' />
       <h1>{title}</h1>

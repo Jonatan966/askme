@@ -127,4 +127,36 @@
       flex-direction: column;
     }
   }
+
+  &.dark {
+    background: var(--black-medium);
+    min-height: 100vh;
+
+    header {
+      border-color: var(--black);
+    }
+
+    main {
+      .room-title {
+        h1 {
+          color: var(--gray-light);
+        }
+  
+        span {
+          color: var(--black-medium);
+        }
+      }
+
+      form {
+        textarea {
+          background: var(--black-dark);
+          color: var(--white);
+        }
+      }
+
+      .form-footer .user-info span {
+        color: var(--gray-light);
+      }      
+    }
+  }
 }

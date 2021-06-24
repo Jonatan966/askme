@@ -170,4 +170,25 @@
       margin-top: 2rem;
     }
   }
+
+  &.dark {
+    main {
+      background: var(--black-medium);
+    }
+
+    .main-content {
+      form input {
+        background: var(--black-dark);
+        color: var(--white);
+      }
+
+      h2 {
+        color: var(--gray-light);
+      }
+    }
+    
+    aside strong, aside p {
+      color: var(--black-dark);
+    }
+  }
 }

@@ -1,3 +1,4 @@
+import { useTheme } from '@hooks/useTheme'
 import { ReactNode } from 'react'
 
 import './styles.scss'
@@ -16,8 +17,10 @@ export function Question({
   author,
   children
 }: QuestionProps) {
+  const { currentTheme } = useTheme()
+
   return (
-    <div className="question">
+    <div className={`question ${currentTheme}`}>
       <p>{content}</p>
       <footer>
         <div className="user-info">

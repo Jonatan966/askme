@@ -11,11 +11,14 @@ import logoImg from '@assets/images/logo.svg'
 import googleIconImg from '@assets/images/google-icon.svg'
 
 import './styles.scss'
+import { useTheme } from '@hooks/useTheme'
 
 export function HomePage() {
   const history = useHistory()
   const { signInWithGoogle, user } = useAuth()
   const [roomCode, setRoomCode] = useState('')
+
+  const { currentTheme } = useTheme()
 
   async function handleCreateRoom() {
     if (!user) {
@@ -48,7 +51,7 @@ export function HomePage() {
   }
 
   return (
-    <div id='page-auth'>
+    <div id='page-auth' className={currentTheme}>
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de &amp;A ao-vivo</strong>

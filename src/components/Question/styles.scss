@@ -61,4 +61,12 @@
       }
     }
   }
+
+  &.dark {
+    background: var(--black-dark);
+
+    p {
+      color: var(--gray-light);
+    }
+  }
 }

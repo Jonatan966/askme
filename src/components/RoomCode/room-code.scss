@@ -27,4 +27,13 @@
     font-size: 0.875rem;
     font-weight: 500;
   }
+
+  &.dark {
+    background: transparent;
+    color: var(--gray-light);
+
+    img {
+      filter: invert(1);
+    }
+  }
 }

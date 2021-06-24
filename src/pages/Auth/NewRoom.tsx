@@ -4,6 +4,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { Button } from '@components/Button'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
+import { useTheme } from '@hooks/useTheme'
 
 import illustrationImg from '@assets/images/illustration.svg'
 import logoImg from '@assets/images/logo.svg'
@@ -15,6 +16,9 @@ export function NewRoomPage() {
   const [roomName, setRoomName] = useState('')
 
   const history = useHistory()
+
+  const { currentTheme } = useTheme()
+
 
   async function handleCreateRoom(event: FormEvent) {
     event.preventDefault()
@@ -34,7 +38,7 @@ export function NewRoomPage() {
   }
 
   return (
-    <div id='page-auth'>
+    <div id='page-auth' className={currentTheme}>
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de &amp;A ao-vivo</strong>

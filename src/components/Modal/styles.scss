@@ -24,6 +24,10 @@
   border-radius: 0.25rem;
   margin: 0 1rem;
 
+  &.dark {
+    background: var(--black-dark); 
+  }
+
   @media (max-width: 820px) {
     margin: 0;
     border-radius: 1rem 1rem 0 0;
@@ -72,4 +76,21 @@
   .confirm-button {
     background: var(--red-light);
   }
+
+  &.dark {
+    h1 {
+      color: var(--gray-light);
+    }
+
+    .cancel-button {
+      background: var(--black);
+      color: var(--gray-medium);  
+    }
+
+    .confirm-button {
+      color: var(--black-dark);
+    }
+  }
+
+  
 }
