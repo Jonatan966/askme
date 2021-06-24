@@ -1,7 +1,7 @@
 #page-auth {
   display: flex;
   align-items: stretch;
-  height: 100vh;
+  min-height: 100vh;
 
   aside {
     flex: 7;
@@ -138,6 +138,36 @@
       height: 1px;
       background: var(--gray-medium);
       margin-left: 1rem;
+    }
+  }
+
+  @media screen and(max-width:768px) {
+    flex-direction: column;
+
+    .create-room {
+      margin-top: 1rem;
+    }
+
+    aside {
+      padding: 0.5rem 3rem;
+      position: relative;
+
+      img {
+        max-width: 8rem;
+        // position: fixed;
+      }
+
+      strong {
+        font-size: 1.75rem;
+      }
+
+      p {
+        font-size: 1.25rem;
+      }
+    }
+
+    .main-content h2 {
+      margin-top: 2rem;
     }
   }
 }
