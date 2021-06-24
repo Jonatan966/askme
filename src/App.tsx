@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { HomePage } from './pages/Home'
-import { NewRoomPage } from "./pages/NewRoom"
+import { HomePage } from './pages/Auth'
+import { NewRoomPage } from './pages/Auth/NewRoom'
 import { AuthProvider } from './hooks/useAuth'
 import { RoomPage } from './pages/Room'
-import { AdminRoomPage } from './pages/AdminRoom'
+import { AdminRoomPage } from './pages/Room/AdminRoom'
 
 function App() {
   return (
