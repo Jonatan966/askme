@@ -1,19 +1,11 @@
-import { FC } from 'react'
-import { useContext } from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import { createContext } from 'react'
+import { FC , useContext, useEffect, useState, createContext } from 'react'
+import { UserProps } from 'interfaces/user.interface'
 
 import { auth, firebase } from '../services/firebase'
 
-export interface UserProps {
-  id: string;
-  name: string;
-  avatar: string;
-}
-
 interface AuthContextProps {
   signInWithGoogle: () => Promise<void>;
+  signOut: () => Promise<void>;
   user: UserProps | undefined;
 }
 
@@ -42,6 +34,11 @@ export const AuthProvider: FC = ({ children }) => {
     }
   }
 
+  async function signOut() {
+    await auth.signOut()
+    setUser(undefined)
+  }
+
   function saveUserInformation(userInformation: firebase.User) {
     const { displayName, photoURL, uid } = userInformation
 
@@ -59,7 +56,8 @@ export const AuthProvider: FC = ({ children }) => {
   return (
     <AuthContext.Provider value={{
       user,
-      signInWithGoogle
+      signInWithGoogle,
+      signOut
     }}>
       {children}
     </AuthContext.Provider>

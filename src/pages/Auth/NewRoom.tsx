@@ -2,6 +2,7 @@ import { FormEvent, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 import { Button } from '@components/Button'
+import { UserInfo } from '@components/UserInfo'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
 import { useTheme } from '@hooks/useTheme'
@@ -67,6 +68,11 @@ export function NewRoomPage() {
             Quer entrar em uma sala existente? {' '}
             <Link to='/'>Clique aqui</Link>
           </p>
+
+          
+          {user && (
+            <UserInfo user={user} />
+          )}
         </div>
       </main>
     </div>

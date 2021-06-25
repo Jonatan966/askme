@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import { Button } from '@components/Button'
 import { RoomHeader } from '@components/RoomHeader'
 import { Question } from '@components/Question'
+import { UserInfo } from '@components/UserInfo'
 
 import { useTheme } from '@hooks/useTheme'
 import { useAuth } from '@hooks/useAuth'
@@ -21,7 +22,7 @@ type RoomParams = {
 }
 
 export function RoomPage() {
-  const { user } = useAuth()
+  const { user, signInWithGoogle } = useAuth()
   const { id: roomId } = useParams<RoomParams>()
   const [newQuestion, setNewQuestion] = useState('')
   
@@ -91,13 +92,10 @@ export function RoomPage() {
 
           <div className="form-footer">
             {user ? (
-              <div className="user-info">
-                <img src={user.avatar} alt={user.name} />
-                <span>{user.name}</span>
-              </div>
+              <UserInfo user={user}  />
             ) : (
               <span>
-                Para enviar uma pergunta, <button>faça seu login</button>
+                Para enviar uma pergunta, <button onClick={signInWithGoogle}>faça seu login</button>
               </span>
             ) }
 

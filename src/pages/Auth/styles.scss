@@ -88,6 +88,10 @@
         color: var(--pink);
       }
     }
+
+    .user-info {
+      margin-top: 1rem;
+    }
   }
 
   .create-room {
@@ -185,6 +189,7 @@
       h2 {
         color: var(--gray-light);
       }
+
     }
     
     aside strong, aside p {
