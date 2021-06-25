@@ -2,6 +2,7 @@ import { useHistory, useParams } from 'react-router-dom'
 
 import { Question } from '@components/Question'
 import { ConfirmModal } from '@components/Modal/ConfirmModal'
+import { RoomHeader } from '@components/RoomHeader'
 
 import { useModal } from '@hooks/useModal'
 import { useRoom } from '@hooks/useRoom'
@@ -9,9 +10,10 @@ import { useTheme } from '@hooks/useTheme'
 import { database } from '@services/firebase'
 
 import deleteImg from '@assets/images/delete.svg'
+import checkImg from '@assets/images/check.svg'
+import answerImg from '@assets/images/answer.svg'
 
 import './styles.scss'
-import { RoomHeader } from '@components/RoomHeader'
 
 type RoomParams = {
   id: string;
@@ -46,6 +48,19 @@ export function AdminRoomPage() {
 
     history.replace('/')
   }
+
+  async function handleCheckQuestionAsAnswered(questionId: string) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isAnswered: true
+    })
+  }
+
+  async function handleHightlightQuestion(questionId: string) {
+    await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
+      isHighlighted: true
+    })
+  }
+
 
   return (
     <div id="page-room" className={currentTheme}>
@@ -84,7 +99,27 @@ export function AdminRoomPage() {
               author={question.author}
               content={question.content}
               key={question.id}
+              isAnswered={question.isAnswered}
+              isHighlighted={question.isHighlighted}
             >
+              {!question.isAnswered && (
+                <>
+                  <button
+                    type='button'
+                    onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                  >
+                    <img src={checkImg} alt='Marcar pergunta como respondida' />
+                  </button>
+
+                  <button
+                    type='button'
+                    onClick={() => handleHightlightQuestion(question.id)}
+                  >
+                    <img src={answerImg} alt='Dar destaque à pergunta' />
+                  </button>
+                </>
+              )}
+
               <button
                 type='button'
                 onClick={() => handleOpenConfirmDeleteQuestionModal(question.id)}
