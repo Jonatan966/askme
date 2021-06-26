@@ -15,6 +15,7 @@ import answerImg from '@assets/images/answer.svg'
 
 import './styles.scss'
 import { ShowAfterLoad } from '@components/ShowAfterLoad'
+import { CenteredMessage } from '@components/CenteredMessage'
 
 type RoomParams = {
   id: string;
@@ -94,42 +95,50 @@ export function AdminRoomPage () {
             )}
           </div>
 
-          <div className="question-list">
-            {questions.map(question => (
-              <Question
-                author={question.author}
-                content={question.content}
-                key={question.id}
-                isAnswered={question.isAnswered}
-                isHighlighted={question.isHighlighted}
-              >
-                {!question.isAnswered && (
-                  <>
-                    <button
-                      type='button'
-                      onClick={() => handleCheckQuestionAsAnswered(question.id)}
-                    >
-                      <img src={checkImg} alt='Marcar pergunta como respondida' />
-                    </button>
+          {questions.length
+            ? (
+                <div className="question-list">
+                {questions.map(question => (
+                  <Question
+                    author={question.author}
+                    content={question.content}
+                    key={question.id}
+                    isAnswered={question.isAnswered}
+                    isHighlighted={question.isHighlighted}
+                  >
+                    {!question.isAnswered && (
+                      <>
+                        <button
+                          type='button'
+                          onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                        >
+                          <img src={checkImg} alt='Marcar pergunta como respondida' />
+                        </button>
+
+                        <button
+                          type='button'
+                          onClick={() => handleHightlightQuestion(question.id)}
+                        >
+                          <img src={answerImg} alt='Dar destaque à pergunta' />
+                        </button>
+                      </>
+                    )}
 
                     <button
                       type='button'
-                      onClick={() => handleHightlightQuestion(question.id)}
+                      onClick={() => handleOpenConfirmDeleteQuestionModal(question.id)}
                     >
-                      <img src={answerImg} alt='Dar destaque à pergunta' />
+                      <img src={deleteImg} alt='Remover pergunta' />
                     </button>
-                  </>
-                )}
-
-                <button
-                  type='button'
-                  onClick={() => handleOpenConfirmDeleteQuestionModal(question.id)}
-                >
-                  <img src={deleteImg} alt='Remover pergunta' />
-                </button>
-              </Question>
-            ))}
-          </div>
+                  </Question>
+                ))}
+              </div>
+              )
+            : <CenteredMessage
+                title='Nenhuma pergunta por aqui...'
+                message='Envie o código desta sala para seus amigos e comece a responder perguntas!'
+              />
+          }
         </main>
       </ShowAfterLoad>
     </div>

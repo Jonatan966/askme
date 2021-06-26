@@ -16,6 +16,7 @@ import { ReactComponent as LikeImg } from '@assets/images/like.svg'
 
 import './styles.scss'
 import { ShowAfterLoad } from '@components/ShowAfterLoad'
+import { CenteredMessage } from '@components/CenteredMessage'
 
 type RoomParams = {
   id: string;
@@ -105,30 +106,38 @@ export function RoomPage() {
             </div>
           </form>
 
-          <div className="question-list">
-            {questions.map(question => (
-              <Question
-                author={question.author}
-                content={question.content}
-                key={question.id}
-                isAnswered={question.isAnswered}
-                isHighlighted={question.isHighlighted}
-              >
-                { !question.isAnswered && (
-                  <button
-                    className={`like-button ${question.likeId ? 'liked' : ''}`}
-                    type='button'
-                    aria-label='Marcar como gostei'
-                    title='Marcar como gostei'
-                    onClick={() => handleLikeQuestion(question.id, question.likeId)}
+          {questions.length
+            ? (
+              <div className="question-list">
+                {questions.map(question => (
+                  <Question
+                    author={question.author}
+                    content={question.content}
+                    key={question.id}
+                    isAnswered={question.isAnswered}
+                    isHighlighted={question.isHighlighted}
                   >
-                    {question.likeCount > 0 && <span>{question.likeCount}</span>}
-                    <LikeImg/>
-                  </button>
-                )}
-              </Question>
-            ))}
-          </div>
+                    { !question.isAnswered && (
+                      <button
+                        className={`like-button ${question.likeId ? 'liked' : ''}`}
+                        type='button'
+                        aria-label='Marcar como gostei'
+                        title='Marcar como gostei'
+                        onClick={() => handleLikeQuestion(question.id, question.likeId)}
+                      >
+                        {question.likeCount > 0 && <span>{question.likeCount}</span>}
+                        <LikeImg/>
+                      </button>
+                    )}
+                  </Question>
+                ))}
+              </div>
+              )
+            : <CenteredMessage
+                title='Nenhuma pergunta por aqui...'
+                message={`${user ? 'S' : 'Faça login e s'}eja a primeira pessoa a fazer uma pergunta!`}
+              />
+          }
         </main>
       </ShowAfterLoad>
     </div>
