@@ -5,11 +5,11 @@ import { Link, useHistory } from 'react-router-dom'
 import { Button } from '@components/Button'
 import { UserInfo } from '@components/UserInfo'
 import { ShowAfterLoad } from '@components/ShowAfterLoad'
+import { AppLogo } from '@components/AppLogo'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
 
 import illustrationImg from '@assets/images/illustration.svg'
-import logoImg from '@assets/images/logo.svg'
 
 import { PageAuthContainer } from './styles'
 
@@ -57,7 +57,7 @@ export function NewRoomPage () {
         <main>
           <ShowAfterLoad isLoading={isLoadingUserInformation}>
             <div className='main-content'>
-              <img src={logoImg} alt="Letmeask" />
+              <AppLogo />
 
               <h2>Criar uma nova sala</h2>
 
