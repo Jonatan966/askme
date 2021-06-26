@@ -11,10 +11,12 @@ import illustrationImg from '@assets/images/illustration.svg'
 import logoImg from '@assets/images/logo.svg'
 
 import './styles.scss'
+import toast from 'react-hot-toast'
 
 export function NewRoomPage () {
   const { user } = useAuth()
   const [roomName, setRoomName] = useState('')
+  const [isCreatingRoom, setIsCreatingRoom] = useState(false)
 
   const history = useHistory()
 
@@ -22,19 +24,22 @@ export function NewRoomPage () {
 
   async function handleCreateRoom (event: FormEvent) {
     event.preventDefault()
+    setIsCreatingRoom(true)
 
-    if (roomName.trim() === '') {
-      return
+    try {
+      const roomRef = database.ref('rooms')
+
+      const firebaseRoom = await roomRef.push({
+        title: roomName,
+        authorId: user?.id
+      })
+
+      history.push(`/admin/rooms/${firebaseRoom.key}`)
+    } catch {
+      toast.error('Ocorreu um erro interno ao tentar criar essa sala')
+    } finally {
+      setIsCreatingRoom(false)
     }
-
-    const roomRef = database.ref('rooms')
-
-    const firebaseRoom = await roomRef.push({
-      title: roomName,
-      authorId: user?.id
-    })
-
-    history.push(`/admin/rooms/${firebaseRoom.key}`)
   }
 
   return (
@@ -58,7 +63,7 @@ export function NewRoomPage () {
               value={roomName}
               onChange={event => setRoomName(event.target.value)}
             />
-            <Button type="submit" disabled={!roomName}>
+            <Button type="submit" disabled={!roomName.trim()} isLoading={isCreatingRoom}>
               Criar sala
             </Button>
           </form>
