@@ -86,17 +86,16 @@ export const PageRoomContainer = styled.div`
 
   /* Mobile L */
   @media screen and (max-width: 525px) {
-    header .content {
-      flex-direction: column;
-      gap: 1rem;
-
-      > div {
-        flex-direction: column;
-      }
-    }
-
     main .room-title {
       flex-direction: column;
+    }
+  }
+
+  @media screen and (max-width: 425px) {
+    main form .form-footer {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: stretch;
     }
   }
 `

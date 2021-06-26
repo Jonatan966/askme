@@ -2,6 +2,10 @@ import { AppLogo } from '@components/AppLogo'
 import { Button } from '@components/Button'
 import { RoomCode } from '@components/RoomCode'
 import { ThemeSwitcher } from '@components/ThemeSwitcher'
+import { useState } from 'react'
+
+import { ReactComponent as MenuImg } from '@assets/images/menu.svg'
+import { ReactComponent as CloseImg } from '@assets/images/close.svg'
 
 import { RoomHeaderContainer } from './styles'
 
@@ -11,12 +15,27 @@ type RoomHeaderTypes = {
 }
 
 export function RoomHeader({ roomId, handleOpenConfirmEndRoomModal }: RoomHeaderTypes) {
+  const [isNavbarVisible, setIsNavbarVisible] = useState(false)
+
+  const toggleNavbar = () => setIsNavbarVisible(!isNavbarVisible)
+
   return (
     <RoomHeaderContainer>
       <div className='content'>
-        <AppLogo/>
+        <input type="checkbox" hidden checked={isNavbarVisible} readOnly />
+        <div className='main-content'>
+          <AppLogo/>
+          <ThemeSwitcher/>
+          <Button
+            className='show-nav-btn'
+            onClick={toggleNavbar}
+            title={`${isNavbarVisible ? 'Fechar' : 'Abrir'} menu`}
+          >
+            {isNavbarVisible ? <CloseImg/> : <MenuImg/>}
+          </Button>
+        </div>
 
-        <div>
+        <nav>
           <RoomCode roomCode={roomId} />
           {handleOpenConfirmEndRoomModal && (
             <Button
@@ -26,8 +45,7 @@ export function RoomHeader({ roomId, handleOpenConfirmEndRoomModal }: RoomHeader
               Encerrar sala
             </Button>
           )}
-          <ThemeSwitcher/>
-        </div>
+        </nav>
       </div>
     </RoomHeaderContainer>
   )
