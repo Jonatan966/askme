@@ -5,36 +5,6 @@ export const PageAuthContainer = styled.div`
   align-items: stretch;
   min-height: 100vh;
 
-  aside {
-    flex: 7;
-
-    background: ${ctx => ctx.theme.colors.primary};
-    color: ${ctx => ctx.theme.colors.textTertiary};
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    padding: 7.5rem 5rem;
-
-    img {
-      max-width: 20rem;
-    }
-
-    strong {
-      font: 700 2.25rem 'Poppins', sans-serif;
-      line-height: 2.6rem;
-      margin-top: 1rem;
-    }
-
-    p {
-      font-size: 1.5rem;
-      line-height: 2rem;
-      margin-top: 1rem;
-      color: ${ctx => ctx.theme.colors.backgroundPrimary};
-    }
-  }
-
   main {
     flex: 8;
 
@@ -152,29 +122,12 @@ export const PageAuthContainer = styled.div`
 
   @media (max-width:768px) {
     flex-direction: column;
+    position: relative;
 
     .create-room {
       margin-top: 1rem;
     }
-
-    aside {
-      padding: 0.5rem 3rem;
-      position: relative;
-
-      img {
-        max-width: 8rem;
-        // position: fixed;
-      }
-
-      strong {
-        font-size: 1.75rem;
-      }
-
-      p {
-        font-size: 1.25rem;
-      }
-    }
-
+    
     .main-content h2 {
       margin-top: 2rem;
     }

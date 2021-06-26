@@ -7,9 +7,9 @@ import { AppLogo } from '@components/AppLogo'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
 
-import illustrationImg from '@assets/images/illustration.svg'
 import googleIconImg from '@assets/images/google-icon.svg'
 import { PageAuthContainer } from './styles'
+import { WelcomeAside } from '@components/WelcomeAside'
 
 export function HomePage () {
   const history = useHistory()
@@ -48,11 +48,7 @@ export function HomePage () {
 
   return (
     <PageAuthContainer>
-      <aside>
-        <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
-        <strong>Crie salas de &amp;A ao-vivo</strong>
-        <p>Tire as dúvidas da sua audiência em tempo-real</p>
-      </aside>
+      <WelcomeAside/>
 
       <main>
         <div className='main-content'>

@@ -6,10 +6,9 @@ import { Button } from '@components/Button'
 import { UserInfo } from '@components/UserInfo'
 import { ShowAfterLoad } from '@components/ShowAfterLoad'
 import { AppLogo } from '@components/AppLogo'
+import { WelcomeAside } from '@components/WelcomeAside'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
-
-import illustrationImg from '@assets/images/illustration.svg'
 
 import { PageAuthContainer } from './styles'
 
@@ -48,11 +47,7 @@ export function NewRoomPage () {
 
   return (
     <PageAuthContainer>
-      <aside>
-        <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
-        <strong>Crie salas de &amp;A ao-vivo</strong>
-        <p>Tire as dúvidas da sua audiência em tempo-real</p>
-      </aside>
+        <WelcomeAside/>
 
         <main>
           <ShowAfterLoad isLoading={isLoadingUserInformation}>
