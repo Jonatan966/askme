@@ -1,5 +1,5 @@
-import { useTheme } from '@hooks/useTheme'
 import { Toaster } from 'react-hot-toast'
+import { useTheme } from 'styled-components'
 
 import './styles.scss'
 

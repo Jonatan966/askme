@@ -1,8 +1,9 @@
+import { useTheme } from 'styled-components'
+
 import { Button } from '@components/Button'
 
 import moonImg from '@assets/images/moon.svg'
 import sunImg from '@assets/images/sun.svg'
-import { useTheme } from '@hooks/useTheme'
 
 export function ThemeSwitcher() {
   const { toggleTheme, currentTheme } = useTheme()

@@ -8,7 +8,6 @@ import { CenteredMessage } from '@components/CenteredMessage'
 
 import { useModal } from '@hooks/useModal'
 import { useRoom } from '@hooks/useRoom'
-import { useTheme } from '@hooks/useTheme'
 
 import { database } from '@services/firebase'
 
@@ -38,8 +37,6 @@ export function AdminRoomPage () {
 
   const { title, questions, isLoadingRoomInformation } = useRoom(roomId)
 
-  const { currentTheme } = useTheme()
-
   async function handleConfirmDeleteQuestion (questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
   }
@@ -65,7 +62,7 @@ export function AdminRoomPage () {
   }
 
   return (
-    <PageRoomContainer className={currentTheme}>
+    <PageRoomContainer>
       <ConfirmModal
         modalState={confirmDeleteQuestionModalState}
         handleCloseModal={handleCloseConfirmDeleteQuestionModal}

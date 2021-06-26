@@ -5,7 +5,6 @@ import toast from 'react-hot-toast'
 import { Button } from '@components/Button'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
-import { useTheme } from '@hooks/useTheme'
 
 import illustrationImg from '@assets/images/illustration.svg'
 import logoImg from '@assets/images/logo.svg'
@@ -16,8 +15,6 @@ export function HomePage () {
   const history = useHistory()
   const { signInWithGoogle, user } = useAuth()
   const [roomCode, setRoomCode] = useState('')
-
-  const { currentTheme } = useTheme()
 
   async function handleCreateRoom () {
     if (!user) {
@@ -50,7 +47,7 @@ export function HomePage () {
   }
 
   return (
-    <PageAuthContainer className={currentTheme}>
+    <PageAuthContainer>
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de &amp;A ao-vivo</strong>

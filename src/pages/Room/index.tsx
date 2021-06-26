@@ -8,7 +8,6 @@ import { UserInfo } from '@components/UserInfo'
 import { ShowAfterLoad } from '@components/ShowAfterLoad'
 import { CenteredMessage } from '@components/CenteredMessage'
 
-import { useTheme } from '@hooks/useTheme'
 import { useAuth } from '@hooks/useAuth'
 import { useRoom } from '@hooks/useRoom'
 
@@ -28,7 +27,6 @@ export function RoomPage() {
   const [newQuestion, setNewQuestion] = useState('')
 
   const { title, questions, isLoadingRoomInformation } = useRoom(roomId)
-  const { currentTheme } = useTheme()
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -73,7 +71,7 @@ export function RoomPage() {
   }
 
   return (
-    <PageRoomContainer className={currentTheme}>
+    <PageRoomContainer>
       <RoomHeader roomId={roomId} />
 
       <ShowAfterLoad isLoading={isLoadingRoomInformation}>

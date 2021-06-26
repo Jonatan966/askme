@@ -7,7 +7,6 @@ import { UserInfo } from '@components/UserInfo'
 import { ShowAfterLoad } from '@components/ShowAfterLoad'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
-import { useTheme } from '@hooks/useTheme'
 
 import illustrationImg from '@assets/images/illustration.svg'
 import logoImg from '@assets/images/logo.svg'
@@ -20,8 +19,6 @@ export function NewRoomPage () {
   const [isCreatingRoom, setIsCreatingRoom] = useState(false)
 
   const history = useHistory()
-
-  const { currentTheme } = useTheme()
 
   useEffect(() => {
     if (!isLoadingUserInformation && !user) {
@@ -50,7 +47,7 @@ export function NewRoomPage () {
   }
 
   return (
-    <PageAuthContainer className={currentTheme}>
+    <PageAuthContainer>
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de &amp;A ao-vivo</strong>

@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Modal from 'react-modal'
 
-import { ThemeProvider } from '@hooks/useTheme'
 import { AppToast } from '@components/AppToast'
+import { AppThemeProvider } from '@contexts/AppThemeProvider'
 
 import { HomePage } from './pages/Auth'
 import { NewRoomPage } from './pages/Auth/NewRoom'
@@ -17,7 +17,7 @@ Modal.setAppElement('#root')
 function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider>
+      <AppThemeProvider>
         <AuthProvider>
           <GlobalStyles/>
           <AppToast />
@@ -29,7 +29,7 @@ function App() {
             <Route path='/admin/rooms/:id' component={AdminRoomPage} />
           </Switch>
         </AuthProvider>
-      </ThemeProvider>
+      </AppThemeProvider>
     </BrowserRouter>
   )
 }
