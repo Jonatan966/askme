@@ -1,6 +1,6 @@
 import { ReactComponent as EmptyQuestionsImg } from '@assets/images/empty-questions.svg'
 
-import './styles.scss'
+import { CenteredMessageContainer } from './styles'
 
 interface CenteredMessageProps {
   title: string;
@@ -9,10 +9,10 @@ interface CenteredMessageProps {
 
 export function CenteredMessage({ message, title }: CenteredMessageProps) {
   return (
-    <div className="centered-message">
+    <CenteredMessageContainer>
       <EmptyQuestionsImg/>
       <h1>{title}</h1>
       <p>{message}</p>
-    </div>
+    </CenteredMessageContainer>
   )
 }

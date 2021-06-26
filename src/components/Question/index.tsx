@@ -1,8 +1,7 @@
-import { useTheme } from '@hooks/useTheme'
 import { ReactNode } from 'react'
 import classNames from 'classnames'
 
-import './styles.scss'
+import { QuestionContainer } from './styles'
 
 type QuestionProps = {
   content: string;
@@ -22,13 +21,9 @@ export function Question({
   isAnswered = false,
   isHighlighted = false
 }: QuestionProps) {
-  const { currentTheme } = useTheme()
-
   return (
-    <div
+    <QuestionContainer
       className={classNames(
-        'question',
-        currentTheme,
         { answered: isAnswered },
         { highlighted: isHighlighted && !isAnswered }
       )}
@@ -44,6 +39,6 @@ export function Question({
           {children}
         </div>
       </footer>
-    </div>
+    </QuestionContainer>
   )
 }

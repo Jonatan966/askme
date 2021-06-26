@@ -3,22 +3,18 @@ import { useHistory } from 'react-router-dom'
 import toast from 'react-hot-toast'
 
 import { Button } from '@components/Button'
+import { AppLogo } from '@components/AppLogo'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
-import { useTheme } from '@hooks/useTheme'
 
 import illustrationImg from '@assets/images/illustration.svg'
-import logoImg from '@assets/images/logo.svg'
 import googleIconImg from '@assets/images/google-icon.svg'
-
-import './styles.scss'
+import { PageAuthContainer } from './styles'
 
 export function HomePage () {
   const history = useHistory()
   const { signInWithGoogle, user } = useAuth()
   const [roomCode, setRoomCode] = useState('')
-
-  const { currentTheme } = useTheme()
 
   async function handleCreateRoom () {
     if (!user) {
@@ -51,7 +47,7 @@ export function HomePage () {
   }
 
   return (
-    <div id='page-auth' className={currentTheme}>
+    <PageAuthContainer>
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de &amp;A ao-vivo</strong>
@@ -60,7 +56,7 @@ export function HomePage () {
 
       <main>
         <div className='main-content'>
-          <img src={logoImg} alt="Letmeask" />
+          <AppLogo/>
           <button className='create-room' onClick={handleCreateRoom}>
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google
@@ -81,6 +77,6 @@ export function HomePage () {
           </form>
         </div>
       </main>
-    </div>
+    </PageAuthContainer>
   )
 }

@@ -5,8 +5,9 @@ import { Button } from '@components/Button'
 import { RoomHeader } from '@components/RoomHeader'
 import { Question } from '@components/Question'
 import { UserInfo } from '@components/UserInfo'
+import { ShowAfterLoad } from '@components/ShowAfterLoad'
+import { CenteredMessage } from '@components/CenteredMessage'
 
-import { useTheme } from '@hooks/useTheme'
 import { useAuth } from '@hooks/useAuth'
 import { useRoom } from '@hooks/useRoom'
 
@@ -14,9 +15,7 @@ import { database } from '@services/firebase'
 
 import { ReactComponent as LikeImg } from '@assets/images/like.svg'
 
-import './styles.scss'
-import { ShowAfterLoad } from '@components/ShowAfterLoad'
-import { CenteredMessage } from '@components/CenteredMessage'
+import { PageRoomContainer } from './styles'
 
 type RoomParams = {
   id: string;
@@ -28,7 +27,6 @@ export function RoomPage() {
   const [newQuestion, setNewQuestion] = useState('')
 
   const { title, questions, isLoadingRoomInformation } = useRoom(roomId)
-  const { currentTheme } = useTheme()
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -73,7 +71,7 @@ export function RoomPage() {
   }
 
   return (
-    <div id="page-room" className={currentTheme}>
+    <PageRoomContainer>
       <RoomHeader roomId={roomId} />
 
       <ShowAfterLoad isLoading={isLoadingRoomInformation}>
@@ -140,6 +138,6 @@ export function RoomPage() {
           }
         </main>
       </ShowAfterLoad>
-    </div>
+    </PageRoomContainer>
   )
 }

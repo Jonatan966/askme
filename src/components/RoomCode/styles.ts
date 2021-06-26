@@ -1,16 +1,20 @@
-.room-code {
+import styled from 'styled-components'
+
+export const RoomCodeContainer = styled.button`
   height: 2.5rem;
   border-radius: 0.5rem;
   overflow: hidden;
 
-  background: var(--white);
-  border: 1px solid var(--purple);
+  background: ${ctx => ctx.theme.colors.textTertiary};
+  border: 1px solid ${ctx => ctx.theme.colors.primary};
+  
   cursor: pointer;
+  color: ${ctx => ctx.theme.colors.textPrimary};
 
   display: flex;
 
   div {
-    background: var(--purple);
+    background: ${ctx => ctx.theme.colors.primary};
     padding: 0 12px;
     display: flex;
     justify-content: center;
@@ -27,13 +31,4 @@
     font-size: 0.875rem;
     font-weight: 500;
   }
-
-  &.dark {
-    background: transparent;
-    color: var(--gray-light);
-
-    img {
-      filter: invert(1);
-    }
-  }
-}
+`

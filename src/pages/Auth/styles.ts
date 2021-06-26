@@ -1,4 +1,6 @@
-#page-auth {
+import styled from 'styled-components'
+
+export const PageAuthContainer = styled.div`
   display: flex;
   align-items: stretch;
   min-height: 100vh;
@@ -6,8 +8,8 @@
   aside {
     flex: 7;
 
-    background: var(--purple);
-    color: var(--white);
+    background: ${ctx => ctx.theme.colors.primary};
+    color: ${ctx => ctx.theme.colors.textTertiary};
 
     display: flex;
     flex-direction: column;
@@ -29,7 +31,7 @@
       font-size: 1.5rem;
       line-height: 2rem;
       margin-top: 1rem;
-      color: var(--white-background);
+      color: ${ctx => ctx.theme.colors.backgroundPrimary};
     }
   }
 
@@ -51,7 +53,7 @@
     align-items: stretch;
     text-align: center;
 
-    > img {
+    > svg {
       align-self: center;
     }
 
@@ -59,6 +61,7 @@
       font-size: 1.5rem;
       margin: 4rem 0 1.5rem;
       font-family: 'Poppins', sans-serif;
+      color: ${ctx => ctx.theme.colors.textPrimary};
     }
 
     form {
@@ -66,8 +69,8 @@
         height: 3rem;
         border-radius: 0.5rem;
         padding: 0 1rem;
-        background: var(--white);
-        border: 1px solid var(--gray-medium);
+        background: ${ctx => ctx.theme.colors.textTertiary};
+        border: 1px solid ${ctx => ctx.theme.colors.detailsSecondary};
       }
 
       button {
@@ -81,12 +84,13 @@
 
     p {
       font-size: 0.875rem;
-      color: var(--gray-dark);
-      margin-top: 1rem;
+      color: ${ctx => ctx.theme.colors.textSecondary};
+      margin: 1rem 0;
 
       a {
-        color: var(--pink);
+        color: ${ctx => ctx.theme.colors.primary};
       }
+
     }
 
     .user-info {
@@ -99,8 +103,8 @@
     height: 3rem;
     border-radius: 0.5rem;
     font-weight: 500;
-    background: var(--red);
-    color: var(--white);
+    background: ${ctx => ctx.theme.colors.google};
+    color: ${ctx => ctx.theme.colors.textTertiary};
 
     display: flex;
     justify-content: center;
@@ -122,7 +126,7 @@
 
   .separator {
     font-size: 0.875rem;
-    color: var(--gray-medium);
+    color: ${ctx => ctx.theme.colors.detailsSecondary};
 
     margin: 2rem 0;
     display: flex;
@@ -132,7 +136,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: var(--gray-medium);
+      background: ${ctx => ctx.theme.colors.detailsSecondary};
       margin-right: 1rem;
     }
 
@@ -140,12 +144,12 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: var(--gray-medium);
+      background: ${ctx => ctx.theme.colors.detailsSecondary};
       margin-left: 1rem;
     }
   }
 
-  @media screen and(max-width:768px) {
+  @media (max-width:768px) {
     flex-direction: column;
 
     .create-room {
@@ -174,26 +178,4 @@
       margin-top: 2rem;
     }
   }
-
-  &.dark {
-    main {
-      background: var(--black-medium);
-    }
-
-    .main-content {
-      form input {
-        background: var(--black-dark);
-        color: var(--white);
-      }
-
-      h2 {
-        color: var(--gray-light);
-      }
-
-    }
-    
-    aside strong, aside p {
-      color: var(--black-dark);
-    }
-  }
-}
+`

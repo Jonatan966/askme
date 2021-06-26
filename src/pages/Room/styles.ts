@@ -1,4 +1,6 @@
-#page-room {
+import styled from 'styled-components'
+
+export const PageRoomContainer = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -21,15 +23,15 @@
       h1 {
         font-family: 'Poppins', sans-serif;
         font-size: 1.5rem;
-        color: var(--black);
+        color: ${ctx => ctx.theme.colors.textPrimary};
       }
 
       span {
         margin-left: 1rem;
-        background: var(--pink);
+        background: ${ctx => ctx.theme.colors.label};
         border-radius: 9999px;
         padding: 0.5rem 1rem;
-        color: var(--white);
+        color: ${ctx => ctx.theme.colors.textTertiary};
         font-weight: 500;
         font-size: 0.875rem;
       }
@@ -41,7 +43,7 @@
         border: 0;
         padding: 1rem;
         border-radius: 0.5rem;
-        background: var(--white-details);
+        background: ${ctx => ctx.theme.colors.detailsQuaternary};
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
         resize: vertical;
         min-height: 8.12rem;
@@ -55,13 +57,13 @@
 
         > span {
           font-size: 0.875rem;
-          color: var(--gray-dark);
+          color: ${ctx => ctx.theme.colors.textSecondary};
           font-weight: 500;
 
           button {
             background: transparent;
             border: 0;
-            color: var(--purple);
+            color: ${ctx => ctx.theme.colors.primary};
             text-decoration: underline;
             font-size: 0.875rem;
             font-weight: 500;
@@ -91,35 +93,4 @@
       flex-direction: column;
     }
   }
-
-  &.dark {
-    background: var(--black-medium);
-
-    header {
-      border-color: var(--black);
-    }
-
-    main {
-      .room-title {
-        h1 {
-          color: var(--gray-light);
-        }
-  
-        span {
-          color: var(--black-medium);
-        }
-      }
-
-      form {
-        textarea {
-          background: var(--black-dark);
-          color: var(--white);
-        }
-      }
-
-      .form-footer .user-info span {
-        color: var(--gray-light);
-      }      
-    }
-  }
-}
+`
