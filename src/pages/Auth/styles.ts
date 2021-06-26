@@ -148,7 +148,7 @@ export const PageAuthContainer = styled.div`
     }
   }
 
-  @media screen and(max-width:768px) {
+  @media (max-width:768px) {
     flex-direction: column;
 
     .create-room {
