@@ -19,7 +19,7 @@ type RoomParams = {
   id: string;
 }
 
-export function AdminRoomPage() {
+export function AdminRoomPage () {
   const history = useHistory()
   const { id: roomId } = useParams<RoomParams>()
   const [
@@ -28,20 +28,20 @@ export function AdminRoomPage() {
     handleCloseConfirmDeleteQuestionModal
   ] = useModal<string>()
   const [
-    confirmEndRoomModalState, 
-    handleOpenConfirmEndRoomModal, 
+    confirmEndRoomModalState,
+    handleOpenConfirmEndRoomModal,
     handleCloseConfirmEndRoomModal
   ] = useModal()
-  
+
   const { title, questions } = useRoom(roomId)
 
   const { currentTheme } = useTheme()
 
-  async function handleConfirmDeleteQuestion(questionId: string) {
+  async function handleConfirmDeleteQuestion (questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
   }
 
-  async function handleConfirmEndRoom() {
+  async function handleConfirmEndRoom () {
     await database.ref(`rooms/${roomId}`).update({
       endedAt: new Date()
     })
@@ -49,22 +49,21 @@ export function AdminRoomPage() {
     history.replace('/')
   }
 
-  async function handleCheckQuestionAsAnswered(questionId: string) {
+  async function handleCheckQuestionAsAnswered (questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
       isAnswered: true
     })
   }
 
-  async function handleHightlightQuestion(questionId: string) {
+  async function handleHightlightQuestion (questionId: string) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
       isHighlighted: true
     })
   }
 
-
   return (
     <div id="page-room" className={currentTheme}>
-      <ConfirmModal 
+      <ConfirmModal
         modalState={confirmDeleteQuestionModalState}
         handleCloseModal={handleCloseConfirmDeleteQuestionModal}
         onConfirm={handleConfirmDeleteQuestion}
@@ -72,7 +71,7 @@ export function AdminRoomPage() {
         description='Tem certeza que você deseja excluir esta pergunta?'
       />
 
-      <ConfirmModal 
+      <ConfirmModal
         modalState={confirmEndRoomModalState}
         handleCloseModal={handleCloseConfirmEndRoomModal}
         onConfirm={handleConfirmEndRoom}
@@ -95,7 +94,7 @@ export function AdminRoomPage() {
 
         <div className="question-list">
           {questions.map(question => (
-            <Question 
+            <Question
               author={question.author}
               content={question.content}
               key={question.id}

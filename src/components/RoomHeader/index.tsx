@@ -1,11 +1,11 @@
-import { Button } from "@components/Button"
-import { RoomCode } from "@components/RoomCode"
-import { ThemeSwitcher } from "@components/ThemeSwitcher"
+import { Button } from '@components/Button'
+import { RoomCode } from '@components/RoomCode'
+import { ThemeSwitcher } from '@components/ThemeSwitcher'
 
 import { ReactComponent as LogoImg } from '@assets/images/logo.svg'
 
 import './styles.scss'
-import { useTheme } from "@hooks/useTheme"
+import { useTheme } from '@hooks/useTheme'
 
 type RoomHeaderTypes = {
   roomId: string;
@@ -23,8 +23,8 @@ export function RoomHeader({ roomId, handleOpenConfirmEndRoomModal }: RoomHeader
         <div>
           <RoomCode roomCode={roomId} />
           {handleOpenConfirmEndRoomModal && (
-            <Button 
-              isOutlined 
+            <Button
+              isOutlined
               onClick={() => handleOpenConfirmEndRoomModal()}
             >
               Encerrar sala

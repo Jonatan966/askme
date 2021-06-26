@@ -25,7 +25,7 @@ export function Question({
   const { currentTheme } = useTheme()
 
   return (
-    <div 
+    <div
       className={classNames(
         'question',
         currentTheme,

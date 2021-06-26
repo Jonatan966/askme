@@ -5,22 +5,22 @@ import toast from 'react-hot-toast'
 import { Button } from '@components/Button'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
+import { useTheme } from '@hooks/useTheme'
 
 import illustrationImg from '@assets/images/illustration.svg'
 import logoImg from '@assets/images/logo.svg'
 import googleIconImg from '@assets/images/google-icon.svg'
 
 import './styles.scss'
-import { useTheme } from '@hooks/useTheme'
 
-export function HomePage() {
+export function HomePage () {
   const history = useHistory()
   const { signInWithGoogle, user } = useAuth()
   const [roomCode, setRoomCode] = useState('')
 
   const { currentTheme } = useTheme()
 
-  async function handleCreateRoom() {
+  async function handleCreateRoom () {
     if (!user) {
       await signInWithGoogle()
     }
@@ -28,7 +28,7 @@ export function HomePage() {
     history.push('/rooms/new')
   }
 
-  async function handleJoinRoom(event: FormEvent) {
+  async function handleJoinRoom (event: FormEvent) {
     event.preventDefault()
 
     if (roomCode.trim() === '') {
@@ -40,7 +40,7 @@ export function HomePage() {
     if (!roomRef.exists()) {
       toast.error('Essa sala não existe')
       return
-    } 
+    }
 
     if (roomRef.val().endedAt) {
       toast.error('Essa sala já foi fechada')
@@ -65,12 +65,12 @@ export function HomePage() {
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google
           </button>
-          
+
           <span className='separator'>Ou entre em uma sala</span>
 
           <form onSubmit={handleJoinRoom}>
-            <input 
-              type="text" 
+            <input
+              type="text"
               placeholder='Digite o código da sala'
               onChange={event => setRoomCode(event.target.value)}
               value={roomCode}

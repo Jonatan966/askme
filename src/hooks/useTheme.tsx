@@ -1,6 +1,4 @@
-import { useContext } from "react";
-import { FC, useState } from "react";
-import { createContext } from "react";
+import { useContext, useState, createContext, ReactNode } from 'react'
 
 type CurrentThemeProps = 'light' | 'dark'
 
@@ -9,9 +7,13 @@ type ThemeProps = {
   toggleTheme: () => void
 }
 
+type ThemeProviderProps = {
+  children: ReactNode;
+}
+
 const ThemeContext = createContext({} as ThemeProps)
 
-export const ThemeProvider: FC = ({ children }) => {
+export function ThemeProvider({ children }: ThemeProviderProps) {
   const [currentTheme, setCurrentTheme] = useState<CurrentThemeProps>(() => {
     const storagedCurrentTheme = localStorage.getItem('@letmeask:theme')
 

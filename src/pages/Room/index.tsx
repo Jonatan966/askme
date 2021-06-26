@@ -16,7 +16,6 @@ import { ReactComponent as LikeImg } from '@assets/images/like.svg'
 
 import './styles.scss'
 
-
 type RoomParams = {
   id: string;
 }
@@ -25,7 +24,7 @@ export function RoomPage() {
   const { user, signInWithGoogle } = useAuth()
   const { id: roomId } = useParams<RoomParams>()
   const [newQuestion, setNewQuestion] = useState('')
-  
+
   const { title, questions } = useRoom(roomId)
   const { currentTheme } = useTheme()
 
@@ -62,7 +61,7 @@ export function RoomPage() {
     if (likeId) {
       await database.ref(`rooms/${roomId}/questions/${questionId}/likes/${likeId}`)
         .remove()
-        
+
       return
     }
 
@@ -84,20 +83,21 @@ export function RoomPage() {
         </div>
 
         <form onSubmit={handleSendQuestion}>
-          <textarea 
+          <textarea
             placeholder='O que você quer perguntar?'
             onChange={event => setNewQuestion(event.target.value)}
             value={newQuestion}
           />
 
           <div className="form-footer">
-            {user ? (
-              <UserInfo user={user}  />
-            ) : (
+            {user
+              ? <UserInfo user={user} />
+              : (
               <span>
                 Para enviar uma pergunta, <button onClick={signInWithGoogle}>faça seu login</button>
               </span>
-            ) }
+                )
+            }
 
             <Button type='submit' disabled={!user || !newQuestion}>Enviar pergunta</Button>
           </div>
@@ -105,7 +105,7 @@ export function RoomPage() {
 
         <div className="question-list">
           {questions.map(question => (
-            <Question 
+            <Question
               author={question.author}
               content={question.content}
               key={question.id}
@@ -113,7 +113,7 @@ export function RoomPage() {
               isHighlighted={question.isHighlighted}
             >
               { !question.isAnswered && (
-                <button 
+                <button
                   className={`like-button ${question.likeId ? 'liked' : ''}`}
                   type='button'
                   aria-label='Marcar como gostei'

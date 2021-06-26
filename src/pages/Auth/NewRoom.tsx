@@ -12,7 +12,7 @@ import logoImg from '@assets/images/logo.svg'
 
 import './styles.scss'
 
-export function NewRoomPage() {
+export function NewRoomPage () {
   const { user } = useAuth()
   const [roomName, setRoomName] = useState('')
 
@@ -20,8 +20,7 @@ export function NewRoomPage() {
 
   const { currentTheme } = useTheme()
 
-
-  async function handleCreateRoom(event: FormEvent) {
+  async function handleCreateRoom (event: FormEvent) {
     event.preventDefault()
 
     if (roomName.trim() === '') {
@@ -53,8 +52,8 @@ export function NewRoomPage() {
           <h2>Criar uma nova sala</h2>
 
           <form onSubmit={handleCreateRoom}>
-            <input 
-              type="text" 
+            <input
+              type="text"
               placeholder='Nome da sala'
               value={roomName}
               onChange={event => setRoomName(event.target.value)}
@@ -69,7 +68,6 @@ export function NewRoomPage() {
             <Link to='/'>Clique aqui</Link>
           </p>
 
-          
           {user && (
             <UserInfo user={user} />
           )}

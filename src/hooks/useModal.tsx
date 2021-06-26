@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 export interface ModalState<S> {
   isOpen: boolean;

@@ -1,4 +1,4 @@
-import { FC , useContext, useEffect, useState, createContext } from 'react'
+import { useContext, useEffect, useState, createContext, ReactNode } from 'react'
 import { UserProps } from 'interfaces/user.interface'
 
 import { auth, firebase } from '../services/firebase'
@@ -9,9 +9,13 @@ interface AuthContextProps {
   user: UserProps | undefined;
 }
 
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
 const AuthContext = createContext({} as AuthContextProps)
 
-export const AuthProvider: FC = ({ children }) => {
+export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<UserProps>()
 
   useEffect(() => {
@@ -52,7 +56,7 @@ export const AuthProvider: FC = ({ children }) => {
       avatar: photoURL
     })
   }
-  
+
   return (
     <AuthContext.Provider value={{
       user,

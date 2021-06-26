@@ -1,5 +1,5 @@
-import { useAuth } from "@hooks/useAuth";
-import { UserProps } from "interfaces/user.interface";
+import { useAuth } from '@hooks/useAuth'
+import { UserProps } from 'interfaces/user.interface'
 
 import './styles.scss'
 

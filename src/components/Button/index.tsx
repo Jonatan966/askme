@@ -1,5 +1,5 @@
-import { useTheme } from "@hooks/useTheme"
-import { ButtonHTMLAttributes } from "react"
+import { useTheme } from '@hooks/useTheme'
+import { ButtonHTMLAttributes } from 'react'
 
 import './styles.scss'
 
