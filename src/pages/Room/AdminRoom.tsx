@@ -14,6 +14,7 @@ import checkImg from '@assets/images/check.svg'
 import answerImg from '@assets/images/answer.svg'
 
 import './styles.scss'
+import { ShowAfterLoad } from '@components/ShowAfterLoad'
 
 type RoomParams = {
   id: string;
@@ -33,7 +34,7 @@ export function AdminRoomPage () {
     handleCloseConfirmEndRoomModal
   ] = useModal()
 
-  const { title, questions } = useRoom(roomId)
+  const { title, questions, isLoadingRoomInformation } = useRoom(roomId)
 
   const { currentTheme } = useTheme()
 
@@ -84,51 +85,53 @@ export function AdminRoomPage () {
         handleOpenConfirmEndRoomModal={handleOpenConfirmEndRoomModal}
       />
 
-      <main>
-        <div className="room-title">
-          <h1>Sala {title}</h1>
-          {questions.length > 0 && (
-            <span>{questions.length} perguntas</span>
-          )}
-        </div>
+      <ShowAfterLoad isLoading={isLoadingRoomInformation}>
+        <main>
+          <div className="room-title">
+            <h1>Sala {title}</h1>
+            {questions.length > 0 && (
+              <span>{questions.length} perguntas</span>
+            )}
+          </div>
 
-        <div className="question-list">
-          {questions.map(question => (
-            <Question
-              author={question.author}
-              content={question.content}
-              key={question.id}
-              isAnswered={question.isAnswered}
-              isHighlighted={question.isHighlighted}
-            >
-              {!question.isAnswered && (
-                <>
-                  <button
-                    type='button'
-                    onClick={() => handleCheckQuestionAsAnswered(question.id)}
-                  >
-                    <img src={checkImg} alt='Marcar pergunta como respondida' />
-                  </button>
-
-                  <button
-                    type='button'
-                    onClick={() => handleHightlightQuestion(question.id)}
-                  >
-                    <img src={answerImg} alt='Dar destaque à pergunta' />
-                  </button>
-                </>
-              )}
-
-              <button
-                type='button'
-                onClick={() => handleOpenConfirmDeleteQuestionModal(question.id)}
+          <div className="question-list">
+            {questions.map(question => (
+              <Question
+                author={question.author}
+                content={question.content}
+                key={question.id}
+                isAnswered={question.isAnswered}
+                isHighlighted={question.isHighlighted}
               >
-                <img src={deleteImg} alt='Remover pergunta' />
-              </button>
-            </Question>
-          ))}
-        </div>
-      </main>
+                {!question.isAnswered && (
+                  <>
+                    <button
+                      type='button'
+                      onClick={() => handleCheckQuestionAsAnswered(question.id)}
+                    >
+                      <img src={checkImg} alt='Marcar pergunta como respondida' />
+                    </button>
+
+                    <button
+                      type='button'
+                      onClick={() => handleHightlightQuestion(question.id)}
+                    >
+                      <img src={answerImg} alt='Dar destaque à pergunta' />
+                    </button>
+                  </>
+                )}
+
+                <button
+                  type='button'
+                  onClick={() => handleOpenConfirmDeleteQuestionModal(question.id)}
+                >
+                  <img src={deleteImg} alt='Remover pergunta' />
+                </button>
+              </Question>
+            ))}
+          </div>
+        </main>
+      </ShowAfterLoad>
     </div>
   )
 }

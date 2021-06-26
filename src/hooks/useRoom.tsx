@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { database } from '../services/firebase'
 import { useAuth } from './useAuth'
 
@@ -32,8 +33,11 @@ export function useRoom(roomId: string) {
   const { user } = useAuth()
   const [questions, setQuestions] = useState<QuestionType[]>([])
   const [title, setTitle] = useState('')
+  const [isLoadingRoomInformation, setIsLoadingRoomInformation] = useState(true)
 
   useEffect(() => {
+    setIsLoadingRoomInformation(true)
+
     const roomRef = database.ref(`rooms/${roomId}`)
 
     roomRef.on('value', room => {
@@ -56,6 +60,7 @@ export function useRoom(roomId: string) {
 
       setTitle(databaseRoom.title)
       setQuestions(parsedQuestions)
+      setIsLoadingRoomInformation(false)
     })
 
     return () => {
@@ -65,6 +70,7 @@ export function useRoom(roomId: string) {
 
   return {
     questions,
-    title
+    title,
+    isLoadingRoomInformation
   }
 }
