@@ -27,8 +27,12 @@ export function AppThemeProvider({ children }: AppThemeProviderProps) {
   })
 
   function toggleTheme() {
-    setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light')
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light'
+
+    setCurrentTheme(newTheme)
+    localStorage.setItem('@letmeask:theme', newTheme)
   }
+
   return (
     <ThemeProvider theme={{
       ...colorThemes[currentTheme],

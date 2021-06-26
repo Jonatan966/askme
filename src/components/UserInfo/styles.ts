@@ -15,7 +15,7 @@ export const UserInfoContainer = styled.div`
 
   span {
     margin-left: 0.5rem;
-    color: var(--black);
+    color:${ctx => ctx.theme.colors.textPrimary};
     font-weight: 500;
     font-size: 0.875rem;
   }
@@ -32,7 +32,7 @@ export const UserInfoContainer = styled.div`
     text-decoration: underline;
     cursor: pointer;
 
-    color: var(--pink);
+    color: ${ctx => ctx.theme.colors.label};
   }
 
 `

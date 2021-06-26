@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const QuestionContainer = styled.div`
-    background: var(--white-details);
+    background: ${ctx => ctx.theme.colors.detailsQuaternary};
   border-radius: 0.5rem;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   padding: 1.5rem;
@@ -11,20 +11,23 @@ export const QuestionContainer = styled.div`
   }
 
   &.highlighted {
-    background: #f4f0ff;
-    border: 1px solid var(--purple);
+    background: ${ctx => ctx.theme.currentTheme === 'light'
+      ? ctx.theme.colors.primaryLight
+      : ctx.theme.colors.backgroundPrimary
+    };
+    border: 1px solid ${ctx => ctx.theme.colors.primary};
 
     footer .user-info span {
-      color: #29292e;
+      color: ${ctx => ctx.theme.colors.textPrimary};
     }
   }
 
   &.answered {
-    background: #dbdcdd;
+    background: ${ctx => ctx.theme.colors.detailsTertiary}; 
   }
 
   p {
-    color: var(--black);
+    color: ${ctx => ctx.theme.colors.textPrimary};
   }
 
   footer {
@@ -45,7 +48,7 @@ export const QuestionContainer = styled.div`
 
       span {
         margin-left: 0.5rem;
-        color: var(--gray);
+        color: ${ctx => ctx.theme.colors.detailsPrimary};
         font-size: 0.875rem;
       }
     }
@@ -59,15 +62,15 @@ export const QuestionContainer = styled.div`
       &.like-button {
         display: flex;
         align-items: flex-end;
-        color: var(--gray-dark);
+        color: ${ctx => ctx.theme.colors.textSecondary};
         gap: 0.5rem;
+      }
 
-        &.liked {
-          color: #8359fd;
+      &.liked {
+        color: ${ctx => ctx.theme.colors.primary};
 
-          svg path {
-            stroke: #8359fd;
-          }
+        svg path {
+          stroke: ${ctx => ctx.theme.colors.primary};
         }
       }
 
@@ -81,13 +84,4 @@ export const QuestionContainer = styled.div`
       gap: 1rem;
     }
   }
-
-  &.dark {
-    background: var(--black-dark);
-
-    p {
-      color: var(--gray-light);
-    }
-  }
-
 `

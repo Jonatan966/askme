@@ -4,8 +4,8 @@ export const ButtonContainer = styled.button`
   height: 3rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  background: var(--purple);
-  color: var(--white);
+  background: ${ctx => ctx.theme.colors.primary};
+  color: ${ctx => ctx.theme.colors.backgroundPrimary};
   padding: 0 2rem;
 
   display: flex;
@@ -22,9 +22,9 @@ export const ButtonContainer = styled.button`
   }
 
   &.outlined {
-    background: var(--white);
-    border: 1px solid var(--purple);
-    color: var(--purple);
+    background: ${ctx => ctx.theme.colors.textTertiary};
+    border: 1px solid ${ctx => ctx.theme.colors.primary};
+    color: ${ctx => ctx.theme.colors.primary};
   }
 
   &:not(:disabled):hover {
@@ -34,13 +34,5 @@ export const ButtonContainer = styled.button`
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
-  }
-
-  &:not(.outlined).dark {
-    color: var(--black-dark);
-  }
-
-  &.outlined.dark {
-    background: transparent;
   }
 `

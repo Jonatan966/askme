@@ -4,15 +4,11 @@ import styled from 'styled-components'
 export const TesteContainer = styled(Modal)`
   width: 100%;
   max-width: 576px;
-  background: var(--white-background);
+  background: ${ctx => ctx.theme.colors.backgroundPrimary};
   padding: 3rem;
   position: relative;
   border-radius: 0.25rem;
   margin: 0 1rem;
-
-  &.dark {
-    background: var(--black-dark); 
-  }
 
   @media (max-width: 820px) {
     margin: 0;
@@ -33,12 +29,12 @@ export const TesteContainer = styled(Modal)`
 
     h1 {
       margin-top: 1.5rem;
-      color: var(--black);
+      color: ${ctx => ctx.theme.colors.textPrimary};
     }
 
     p {
       margin-top: 0.75rem;
-      color: var(--gray-dark);
+      color: ${ctx => ctx.theme.colors.textSecondary};
       font-size: 1.25rem;
     }
 
@@ -54,27 +50,12 @@ export const TesteContainer = styled(Modal)`
     }
     
     .cancel-button {
-      background: var(--gray-light);
-      color: var(--gray-dark);
+      background: ${ctx => ctx.theme.colors.detailsTertiary};
+      color: ${ctx => ctx.theme.colors.textSecondary};
     }
 
     .confirm-button {
-      background: var(--red-light);
-    }
-
-    &.dark {
-      h1 {
-        color: var(--gray-light);
-      }
-
-      .cancel-button {
-        background: var(--black);
-        color: var(--gray-medium);  
-      }
-
-      .confirm-button {
-        color: var(--black-dark);
-      }
+      background: ${ctx => ctx.theme.colors.danger};
     }
   }
 

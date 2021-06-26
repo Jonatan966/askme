@@ -9,11 +9,11 @@ export const CenteredMessageContainer = styled.div`
   text-align: center;
 
   h1 {
-    color: var(--black);
+    color: ${ctx => ctx.theme.colors.textPrimary};
   }
 
   p {
-    color: var(--gray-dark);
+    color: ${ctx => ctx.theme.colors.textSecondary};
     max-width: 25rem;
   }
 

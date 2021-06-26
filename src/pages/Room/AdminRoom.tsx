@@ -13,7 +13,7 @@ import { database } from '@services/firebase'
 
 import deleteImg from '@assets/images/delete.svg'
 import checkImg from '@assets/images/check.svg'
-import answerImg from '@assets/images/answer.svg'
+import { ReactComponent as AnswerImg } from '@assets/images/answer.svg'
 
 import { PageRoomContainer } from './styles'
 
@@ -116,8 +116,9 @@ export function AdminRoomPage () {
                         <button
                           type='button'
                           onClick={() => handleHightlightQuestion(question.id)}
+                          className={question.isHighlighted ? 'liked' : ''}
                         >
-                          <img src={answerImg} alt='Dar destaque à pergunta' />
+                          <AnswerImg aria-label='Dar destaque à pergunta' />
                         </button>
                       </>
                     )}

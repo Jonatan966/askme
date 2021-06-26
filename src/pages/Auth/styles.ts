@@ -8,8 +8,8 @@ export const PageAuthContainer = styled.div`
   aside {
     flex: 7;
 
-    background: var(--purple);
-    color: var(--white);
+    background: ${ctx => ctx.theme.colors.primary};
+    color: ${ctx => ctx.theme.colors.textTertiary};
 
     display: flex;
     flex-direction: column;
@@ -31,7 +31,7 @@ export const PageAuthContainer = styled.div`
       font-size: 1.5rem;
       line-height: 2rem;
       margin-top: 1rem;
-      color: var(--white-background);
+      color: ${ctx => ctx.theme.colors.backgroundPrimary};
     }
   }
 
@@ -61,6 +61,7 @@ export const PageAuthContainer = styled.div`
       font-size: 1.5rem;
       margin: 4rem 0 1.5rem;
       font-family: 'Poppins', sans-serif;
+      color: ${ctx => ctx.theme.colors.textPrimary};
     }
 
     form {
@@ -68,8 +69,8 @@ export const PageAuthContainer = styled.div`
         height: 3rem;
         border-radius: 0.5rem;
         padding: 0 1rem;
-        background: var(--white);
-        border: 1px solid var(--gray-medium);
+        background: ${ctx => ctx.theme.colors.textTertiary};
+        border: 1px solid ${ctx => ctx.theme.colors.detailsSecondary};
       }
 
       button {
@@ -83,11 +84,11 @@ export const PageAuthContainer = styled.div`
 
     p {
       font-size: 0.875rem;
-      color: var(--gray-dark);
+      color: ${ctx => ctx.theme.colors.textSecondary};
       margin-top: 1rem;
 
       a {
-        color: var(--pink);
+        color: ${ctx => ctx.theme.colors.primary};
       }
     }
 
@@ -101,8 +102,8 @@ export const PageAuthContainer = styled.div`
     height: 3rem;
     border-radius: 0.5rem;
     font-weight: 500;
-    background: var(--red);
-    color: var(--white);
+    background: ${ctx => ctx.theme.colors.google};
+    color: ${ctx => ctx.theme.colors.textTertiary};
 
     display: flex;
     justify-content: center;
@@ -124,7 +125,7 @@ export const PageAuthContainer = styled.div`
 
   .separator {
     font-size: 0.875rem;
-    color: var(--gray-medium);
+    color: ${ctx => ctx.theme.colors.detailsSecondary};
 
     margin: 2rem 0;
     display: flex;
@@ -134,7 +135,7 @@ export const PageAuthContainer = styled.div`
       content: '';
       flex: 1;
       height: 1px;
-      background: var(--gray-medium);
+      background: ${ctx => ctx.theme.colors.detailsSecondary};
       margin-right: 1rem;
     }
 
@@ -142,7 +143,7 @@ export const PageAuthContainer = styled.div`
       content: '';
       flex: 1;
       height: 1px;
-      background: var(--gray-medium);
+      background: ${ctx => ctx.theme.colors.detailsSecondary};
       margin-left: 1rem;
     }
   }
@@ -176,27 +177,4 @@ export const PageAuthContainer = styled.div`
       margin-top: 2rem;
     }
   }
-
-  &.dark {
-    main {
-      background: var(--black-medium);
-    }
-
-    .main-content {
-      form input {
-        background: var(--black-dark);
-        color: var(--white);
-      }
-
-      h2 {
-        color: var(--gray-light);
-      }
-
-    }
-    
-    aside strong, aside p {
-      color: var(--black-dark);
-    }
-  }
-
 `

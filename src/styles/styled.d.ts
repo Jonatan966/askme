@@ -6,23 +6,24 @@ declare module 'styled-components' {
 
     colors: {
       shadow:string;
-      textTrimary:string;
-      textTecondary:string;
+      textPrimary:string;
+      textSecondary:string;
       textTertiary:string;
 
       primary:string;
+      primaryLight: string;
 
       danger:string;
       google:string;
 
-      detailsQrimary:string;
-      detailsQecondary:string;
-      detailsQertiary:string;
+      detailsPrimary:string;
+      detailsSecondary:string;
+      detailsTertiary:string;
       detailsQuaternary:string;
 
       backgroundPrimary:string;
-      backgroundPecondary:string;
-      backgroundPertiary:string;
+      backgroundSecondary:string;
+      backgroundTertiary:string;
 
       label:string;
     }
