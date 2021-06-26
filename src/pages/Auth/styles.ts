@@ -1,4 +1,6 @@
-#page-auth {
+import styled from 'styled-components'
+
+export const PageAuthContainer = styled.div`
   display: flex;
   align-items: stretch;
   min-height: 100vh;
@@ -196,4 +198,5 @@
       color: var(--black-dark);
     }
   }
-}
+
+`

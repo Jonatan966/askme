@@ -10,6 +10,8 @@ import { AuthProvider } from './hooks/useAuth'
 import { RoomPage } from './pages/Room'
 import { AdminRoomPage } from './pages/Room/AdminRoom'
 
+import { GlobalStyles } from './styles/global'
+
 Modal.setAppElement('#root')
 
 function App() {
@@ -17,6 +19,7 @@ function App() {
     <BrowserRouter>
       <ThemeProvider>
         <AuthProvider>
+          <GlobalStyles/>
           <AppToast />
           <Switch>
             <Route path='/' component={HomePage} exact />

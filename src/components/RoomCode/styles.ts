@@ -1,4 +1,6 @@
-.room-code {
+import styled from 'styled-components'
+
+export const RoomCodeContainer = styled.button`
   height: 2.5rem;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -36,4 +38,4 @@
       filter: invert(1);
     }
   }
-}
+`

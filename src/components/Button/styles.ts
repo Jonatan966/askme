@@ -1,4 +1,6 @@
-.button {
+import styled from 'styled-components'
+
+export const ButtonContainer = styled.button`
   height: 3rem;
   border-radius: 0.5rem;
   font-weight: 500;
@@ -41,4 +43,4 @@
   &.outlined.dark {
     background: transparent;
   }
-}
+`

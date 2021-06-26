@@ -1,4 +1,6 @@
-.room-header {
+import styled from 'styled-components'
+
+export const RoomHeaderContainer = styled.header`
   padding: 1.5rem;
   border-bottom: 1px solid var(--gray-light);
 
@@ -27,4 +29,5 @@
   &.dark .letme {
     fill: white;
   }
-}
+
+`

@@ -1,4 +1,4 @@
-import Modal from 'react-modal'
+// import Modal from 'react-modal'
 
 import { Button } from '@components/Button'
 import { ModalState } from '@hooks/useModal'
@@ -6,7 +6,8 @@ import { useTheme } from '@hooks/useTheme'
 
 import deleteImg from '@assets/images/delete.svg'
 
-import './styles.scss'
+import './overlay.scss'
+import { TesteContainer } from './styles'
 
 interface ConfirmModalProps {
   title: string;
@@ -32,7 +33,7 @@ export function ConfirmModal({
   }
 
   return (
-    <Modal
+    <TesteContainer
       isOpen={modalState.isOpen}
       onRequestClose={handleCloseModal}
       overlayClassName='modal-overlay'
@@ -51,6 +52,6 @@ export function ConfirmModal({
           Sim
         </Button>
       </div>
-    </Modal>
+    </TesteContainer>
   )
 }

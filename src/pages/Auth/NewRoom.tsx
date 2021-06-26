@@ -1,8 +1,10 @@
+import toast from 'react-hot-toast'
 import { FormEvent, useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 import { Button } from '@components/Button'
 import { UserInfo } from '@components/UserInfo'
+import { ShowAfterLoad } from '@components/ShowAfterLoad'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
 import { useTheme } from '@hooks/useTheme'
@@ -10,9 +12,7 @@ import { useTheme } from '@hooks/useTheme'
 import illustrationImg from '@assets/images/illustration.svg'
 import logoImg from '@assets/images/logo.svg'
 
-import './styles.scss'
-import toast from 'react-hot-toast'
-import { ShowAfterLoad } from '@components/ShowAfterLoad'
+import { PageAuthContainer } from './styles'
 
 export function NewRoomPage () {
   const { user, isLoadingUserInformation } = useAuth()
@@ -50,7 +50,7 @@ export function NewRoomPage () {
   }
 
   return (
-    <div id='page-auth' className={currentTheme}>
+    <PageAuthContainer className={currentTheme}>
       <aside>
         <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
         <strong>Crie salas de &amp;A ao-vivo</strong>
@@ -87,6 +87,6 @@ export function NewRoomPage () {
             </div>
           </ShowAfterLoad>
         </main>
-    </div>
+    </PageAuthContainer>
   )
 }

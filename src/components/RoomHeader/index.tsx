@@ -1,11 +1,11 @@
 import { Button } from '@components/Button'
 import { RoomCode } from '@components/RoomCode'
 import { ThemeSwitcher } from '@components/ThemeSwitcher'
+import { useTheme } from '@hooks/useTheme'
 
 import { ReactComponent as LogoImg } from '@assets/images/logo.svg'
 
-import './styles.scss'
-import { useTheme } from '@hooks/useTheme'
+import { RoomHeaderContainer } from './styles'
 
 type RoomHeaderTypes = {
   roomId: string;
@@ -16,7 +16,7 @@ export function RoomHeader({ roomId, handleOpenConfirmEndRoomModal }: RoomHeader
   const { currentTheme } = useTheme()
 
   return (
-    <header className={`room-header ${currentTheme}`}>
+    <RoomHeaderContainer className={currentTheme}>
       <div className='content'>
         <LogoImg />
 
@@ -33,6 +33,6 @@ export function RoomHeader({ roomId, handleOpenConfirmEndRoomModal }: RoomHeader
           <ThemeSwitcher/>
         </div>
       </div>
-    </header>
+    </RoomHeaderContainer>
   )
 }

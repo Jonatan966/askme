@@ -1,4 +1,6 @@
-.centered-message {
+import styled from 'styled-components'
+
+export const CenteredMessageContainer = styled.div`
   margin: auto;
 
   display: flex;
@@ -18,4 +20,5 @@
   svg {
     margin-bottom: 1rem;
   }
-}
+
+`

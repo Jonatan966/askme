@@ -1,5 +1,7 @@
-.question {
-  background: var(--white-details);
+import styled from 'styled-components'
+
+export const QuestionContainer = styled.div`
+    background: var(--white-details);
   border-radius: 0.5rem;
   box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   padding: 1.5rem;
@@ -87,4 +89,5 @@
       color: var(--gray-light);
     }
   }
-}
+
+`

@@ -1,8 +1,9 @@
-import { Spinner } from '@components/Spinner'
-import { useTheme } from '@hooks/useTheme'
 import { ButtonHTMLAttributes } from 'react'
 
-import './styles.scss'
+import { Spinner } from '@components/Spinner'
+import { useTheme } from '@hooks/useTheme'
+
+import { ButtonContainer } from './styles'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   isOutlined?: boolean;
@@ -13,7 +14,7 @@ export function Button({ isOutlined = false, isLoading, ...props }: ButtonProps)
   const { currentTheme } = useTheme()
 
   return (
-    <button
+    <ButtonContainer
       {...props}
       {...(isLoading && {
         children: <Spinner />,
@@ -21,7 +22,7 @@ export function Button({ isOutlined = false, isLoading, ...props }: ButtonProps)
         onClick: () => undefined,
         disabled: false
       })}
-      className={`button ${isOutlined ? 'outlined' : ''} ${props.className ? props.className : ''} ${currentTheme}`}
+      className={`${isOutlined ? 'outlined' : ''} ${props.className ? props.className : ''} ${currentTheme}`}
     />
   )
 }

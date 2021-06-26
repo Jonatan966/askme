@@ -1,4 +1,4 @@
-import './styles.scss'
+import { SpinnerContainer } from './styles'
 
 interface SpinnerProps {
   className?: string;
@@ -6,6 +6,6 @@ interface SpinnerProps {
 
 export function Spinner({ className = '' }: SpinnerProps) {
   return (
-    <span className={`spinner ${className}`}/>
+    <SpinnerContainer className={className}/>
   )
 }

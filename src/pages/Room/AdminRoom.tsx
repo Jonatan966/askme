@@ -3,19 +3,20 @@ import { useHistory, useParams } from 'react-router-dom'
 import { Question } from '@components/Question'
 import { ConfirmModal } from '@components/Modal/ConfirmModal'
 import { RoomHeader } from '@components/RoomHeader'
+import { ShowAfterLoad } from '@components/ShowAfterLoad'
+import { CenteredMessage } from '@components/CenteredMessage'
 
 import { useModal } from '@hooks/useModal'
 import { useRoom } from '@hooks/useRoom'
 import { useTheme } from '@hooks/useTheme'
+
 import { database } from '@services/firebase'
 
 import deleteImg from '@assets/images/delete.svg'
 import checkImg from '@assets/images/check.svg'
 import answerImg from '@assets/images/answer.svg'
 
-import './styles.scss'
-import { ShowAfterLoad } from '@components/ShowAfterLoad'
-import { CenteredMessage } from '@components/CenteredMessage'
+import { PageRoomContainer } from './styles'
 
 type RoomParams = {
   id: string;
@@ -64,7 +65,7 @@ export function AdminRoomPage () {
   }
 
   return (
-    <div id="page-room" className={currentTheme}>
+    <PageRoomContainer className={currentTheme}>
       <ConfirmModal
         modalState={confirmDeleteQuestionModalState}
         handleCloseModal={handleCloseConfirmDeleteQuestionModal}
@@ -141,6 +142,6 @@ export function AdminRoomPage () {
           }
         </main>
       </ShowAfterLoad>
-    </div>
+    </PageRoomContainer>
   )
 }

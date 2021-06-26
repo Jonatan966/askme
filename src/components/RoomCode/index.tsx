@@ -2,7 +2,7 @@ import copyImg from '@assets/images/copy.svg'
 import { useTheme } from '@hooks/useTheme'
 import toast from 'react-hot-toast'
 
-import './room-code.scss'
+import { RoomCodeContainer } from './styles'
 
 type RoomCodeProps = {
   roomCode: string;
@@ -17,11 +17,11 @@ export function RoomCode({ roomCode }: RoomCodeProps) {
   }
 
   return (
-    <button className={`room-code ${currentTheme}`} onClick={copyRoomCodeToClipboard}>
+    <RoomCodeContainer className={currentTheme} onClick={copyRoomCodeToClipboard}>
       <div>
         <img src={copyImg} alt='Copy room code' />
       </div>
       <span>Sala #{roomCode}</span>
-    </button>
+    </RoomCodeContainer>
   )
 }
