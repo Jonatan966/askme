@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
+import { useHistory } from 'react-router-dom'
+
 import { database } from '../services/firebase'
 import { useAuth } from './useAuth'
 
@@ -32,30 +35,41 @@ export function useRoom(roomId: string) {
   const { user } = useAuth()
   const [questions, setQuestions] = useState<QuestionType[]>([])
   const [title, setTitle] = useState('')
+  const [isLoadingRoomInformation, setIsLoadingRoomInformation] = useState(true)
+
+  const history = useHistory()
 
   useEffect(() => {
+    setIsLoadingRoomInformation(true)
+
     const roomRef = database.ref(`rooms/${roomId}`)
 
     roomRef.on('value', room => {
-      const databaseRoom = room.val()
-      const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {}
+      try {
+        const databaseRoom = room.val()
+        const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {}
 
-      const parsedQuestions = Object.entries(firebaseQuestions).map(([questionKey, questionValue]) => {
-        return {
-          id: questionKey,
-          content: questionValue.content,
-          author: questionValue.author,
-          isHighlighted: questionValue.isHighlighted,
-          isAnswered: questionValue.isAnswered,
-          likeCount: Object.values(questionValue.likes ?? {}).length,
-          likeId: Object.entries(questionValue.likes ?? {}).find(([key, like]) =>
-            like.authorId === user?.id
-          )?.[0]
-        }
-      })
+        const parsedQuestions = Object.entries(firebaseQuestions).map(([questionKey, questionValue]) => {
+          return {
+            id: questionKey,
+            content: questionValue.content,
+            author: questionValue.author,
+            isHighlighted: questionValue.isHighlighted,
+            isAnswered: questionValue.isAnswered,
+            likeCount: Object.values(questionValue.likes ?? {}).length,
+            likeId: Object.entries(questionValue.likes ?? {}).find(([key, like]) =>
+              like.authorId === user?.id
+            )?.[0]
+          }
+        })
 
-      setTitle(databaseRoom.title)
-      setQuestions(parsedQuestions)
+        setTitle(databaseRoom.title)
+        setQuestions(parsedQuestions)
+        setIsLoadingRoomInformation(false)
+      } catch {
+        toast.error('Não foi possível entrar nessa sala')
+        history.replace('/')
+      }
     })
 
     return () => {
@@ -65,6 +79,7 @@ export function useRoom(roomId: string) {
 
   return {
     questions,
-    title
+    title,
+    isLoadingRoomInformation
   }
 }

@@ -7,6 +7,7 @@ interface AuthContextProps {
   signInWithGoogle: () => Promise<void>;
   signOut: () => Promise<void>;
   user: UserProps | undefined;
+  isLoadingUserInformation: boolean;
 }
 
 interface AuthProviderProps {
@@ -17,12 +18,16 @@ const AuthContext = createContext({} as AuthContextProps)
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<UserProps>()
+  const [isLoadingUserInformation, setIsLoadingUserInformation] = useState(true)
 
   useEffect(() => {
+    setIsLoadingUserInformation(true)
+
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
         saveUserInformation(user)
       }
+      setIsLoadingUserInformation(false)
     })
 
     return () => unsubscribe()
@@ -61,7 +66,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
     <AuthContext.Provider value={{
       user,
       signInWithGoogle,
-      signOut
+      signOut,
+      isLoadingUserInformation
     }}>
       {children}
     </AuthContext.Provider>

@@ -15,6 +15,8 @@ import { database } from '@services/firebase'
 import { ReactComponent as LikeImg } from '@assets/images/like.svg'
 
 import './styles.scss'
+import { ShowAfterLoad } from '@components/ShowAfterLoad'
+import { CenteredMessage } from '@components/CenteredMessage'
 
 type RoomParams = {
   id: string;
@@ -25,7 +27,7 @@ export function RoomPage() {
   const { id: roomId } = useParams<RoomParams>()
   const [newQuestion, setNewQuestion] = useState('')
 
-  const { title, questions } = useRoom(roomId)
+  const { title, questions, isLoadingRoomInformation } = useRoom(roomId)
   const { currentTheme } = useTheme()
 
   async function handleSendQuestion(event: FormEvent) {
@@ -74,60 +76,70 @@ export function RoomPage() {
     <div id="page-room" className={currentTheme}>
       <RoomHeader roomId={roomId} />
 
-      <main>
-        <div className="room-title">
-          <h1>Sala {title}</h1>
-          {questions.length > 0 && (
-            <span>{questions.length} perguntas</span>
-          )}
-        </div>
-
-        <form onSubmit={handleSendQuestion}>
-          <textarea
-            placeholder='O que você quer perguntar?'
-            onChange={event => setNewQuestion(event.target.value)}
-            value={newQuestion}
-          />
-
-          <div className="form-footer">
-            {user
-              ? <UserInfo user={user} />
-              : (
-              <span>
-                Para enviar uma pergunta, <button onClick={signInWithGoogle}>faça seu login</button>
-              </span>
-                )
-            }
-
-            <Button type='submit' disabled={!user || !newQuestion}>Enviar pergunta</Button>
+      <ShowAfterLoad isLoading={isLoadingRoomInformation}>
+        <main>
+          <div className="room-title">
+            <h1>Sala {title}</h1>
+            {questions.length > 0 && (
+              <span>{questions.length} perguntas</span>
+            )}
           </div>
-        </form>
 
-        <div className="question-list">
-          {questions.map(question => (
-            <Question
-              author={question.author}
-              content={question.content}
-              key={question.id}
-              isAnswered={question.isAnswered}
-              isHighlighted={question.isHighlighted}
-            >
-              { !question.isAnswered && (
-                <button
-                  className={`like-button ${question.likeId ? 'liked' : ''}`}
-                  type='button'
-                  aria-label='Marcar como gostei'
-                  title='Marcar como gostei'
-                  onClick={() => handleLikeQuestion(question.id, question.likeId)}
-                >
-                  {question.likeCount > 0 && <span>{question.likeCount}</span>}
-                  <LikeImg/>
-                </button>
-              )}
-            </Question>
-          ))}
-        </div>
-      </main>
+          <form onSubmit={handleSendQuestion}>
+            <textarea
+              placeholder='O que você quer perguntar?'
+              onChange={event => setNewQuestion(event.target.value)}
+              value={newQuestion}
+            />
+
+            <div className="form-footer">
+              {user
+                ? <UserInfo user={user} />
+                : (
+                <span>
+                  Para enviar uma pergunta, <button onClick={signInWithGoogle}>faça seu login</button>
+                </span>
+                  )
+              }
+
+              <Button type='submit' disabled={!user || !newQuestion}>Enviar pergunta</Button>
+            </div>
+          </form>
+
+          {questions.length
+            ? (
+              <div className="question-list">
+                {questions.map(question => (
+                  <Question
+                    author={question.author}
+                    content={question.content}
+                    key={question.id}
+                    isAnswered={question.isAnswered}
+                    isHighlighted={question.isHighlighted}
+                  >
+                    { !question.isAnswered && (
+                      <button
+                        className={`like-button ${question.likeId ? 'liked' : ''}`}
+                        type='button'
+                        aria-label='Marcar como gostei'
+                        title='Marcar como gostei'
+                        onClick={() => handleLikeQuestion(question.id, question.likeId)}
+                      >
+                        {question.likeCount > 0 && <span>{question.likeCount}</span>}
+                        <LikeImg/>
+                      </button>
+                    )}
+                  </Question>
+                ))}
+              </div>
+              )
+            : <CenteredMessage
+                title='Nenhuma pergunta por aqui...'
+                message={`${user ? 'S' : 'Faça login e s'}eja a primeira pessoa a fazer uma pergunta!`}
+              />
+          }
+        </main>
+      </ShowAfterLoad>
     </div>
   )
 }
