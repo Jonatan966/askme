@@ -7,6 +7,7 @@ export const RoomHeaderContainer = styled.header`
   position: sticky;
   top: 0;
   background: ${ctx => ctx.theme.colors.backgroundPrimary};
+  z-index: 100;
 
   .content {
     max-width: 1120px;
