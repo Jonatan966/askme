@@ -4,6 +4,10 @@ export const RoomHeaderContainer = styled.header`
   padding: 1.5rem;
   border-bottom: 1px solid ${ctx => ctx.theme.colors.detailsTertiary};
 
+  position: sticky;
+  top: 0;
+  background: ${ctx => ctx.theme.colors.backgroundPrimary};
+
   .content {
     max-width: 1120px;
     margin: 0 auto;
