@@ -85,11 +85,12 @@ export const PageAuthContainer = styled.div`
     p {
       font-size: 0.875rem;
       color: ${ctx => ctx.theme.colors.textSecondary};
-      margin-top: 1rem;
+      margin: 1rem 0;
 
       a {
         color: ${ctx => ctx.theme.colors.primary};
       }
+
     }
 
     .user-info {
