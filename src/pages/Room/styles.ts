@@ -77,6 +77,7 @@ export const PageRoomContainer = styled.div`
 
     .question-list {
       margin-top: 2rem;
+      margin-bottom: 1rem;
 
       display: flex;
       flex-direction: column;
