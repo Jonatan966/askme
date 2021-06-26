@@ -44,6 +44,8 @@ export const PageRoomContainer = styled.div`
         padding: 1rem;
         border-radius: 0.5rem;
         background: ${ctx => ctx.theme.colors.detailsQuaternary};
+        color: ${ctx => ctx.theme.colors.textPrimary};
+
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
         resize: vertical;
         min-height: 8.12rem;
@@ -75,6 +77,10 @@ export const PageRoomContainer = styled.div`
 
     .question-list {
       margin-top: 2rem;
+
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
   }
 
