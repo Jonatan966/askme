@@ -1,8 +1,7 @@
+import { AppLogo } from '@components/AppLogo'
 import { Button } from '@components/Button'
 import { RoomCode } from '@components/RoomCode'
 import { ThemeSwitcher } from '@components/ThemeSwitcher'
-
-import { ReactComponent as LogoImg } from '@assets/images/logo.svg'
 
 import { RoomHeaderContainer } from './styles'
 
@@ -15,7 +14,7 @@ export function RoomHeader({ roomId, handleOpenConfirmEndRoomModal }: RoomHeader
   return (
     <RoomHeaderContainer>
       <div className='content'>
-        <LogoImg />
+        <AppLogo/>
 
         <div>
           <RoomCode roomCode={roomId} />

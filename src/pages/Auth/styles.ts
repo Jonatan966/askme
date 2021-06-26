@@ -53,7 +53,7 @@ export const PageAuthContainer = styled.div`
     align-items: stretch;
     text-align: center;
 
-    > img {
+    > svg {
       align-self: center;
     }
 
