@@ -8,7 +8,7 @@
 <hr>
 <br>
 
-# 🧪 Tecnologias
+## 🧪 Tecnologias
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - React
@@ -16,7 +16,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - Firebase
 - TypeScript
 
-# 🚀 Como executar
+## 🚀 Como executar
 Clone o projeto e acesse a pasta do mesmo.
 
 ```
@@ -35,8 +35,8 @@ O app estará disponível no seu browser pelo endereço http://localhost:3000.
 
 Lembrando que será necessário criar uma conta no Firebase e um projeto para disponibilizar um Realtime Database.
 
-# 💻 Projeto
+## 💻 Projeto
 O Askme é perfeito para professores(as) poderem criar salas de Q&A com seus alunos, de forma muito organizada e democrática.
 
-# 📝 License
+## 📝 License
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
