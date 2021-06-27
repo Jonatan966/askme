@@ -63,8 +63,16 @@ export function useRoom(roomId: string) {
           }
         })
 
+        const filteredQuestions = parsedQuestions
+          .sort((questionA, questionB) =>
+            Number(questionB.isHighlighted) - Number(questionA.isHighlighted)
+          )
+          .sort((questionA, questionB) =>
+            Number(questionA.isAnswered) - Number(questionB.isAnswered)
+          )
+
         setTitle(databaseRoom.title)
-        setQuestions(parsedQuestions)
+        setQuestions(filteredQuestions)
         setIsLoadingRoomInformation(false)
       } catch {
         toast.error('Não foi possível entrar nessa sala')
