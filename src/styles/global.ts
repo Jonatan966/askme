@@ -27,4 +27,18 @@ export const GlobalStyles = createGlobalStyle`
   body, input, button, textarea {
     font: 400 1rem 'Roboto', sans-serif;
   }
+
+  ::-webkit-scrollbar {
+    background: ${ctx => ctx.theme.colors.primaryLight};
+    width: 0.75rem;
+  }
+
+  
+  ::-webkit-scrollbar-thumb {
+    background: ${ctx => ctx.theme.colors.primary};
+    height: 3rem;
+
+    border-radius: 0.5rem;
+    border: 0.15rem solid ${ctx => ctx.theme.colors.primaryLight};
+  }
 `
