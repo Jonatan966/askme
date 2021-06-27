@@ -55,9 +55,9 @@ export function AdminRoomPage () {
     })
   }
 
-  async function handleHightlightQuestion (questionId: string) {
+  async function handleToggleHightlightQuestion (questionId: string, currentState: boolean) {
     await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-      isHighlighted: true
+      isHighlighted: !currentState
     })
   }
 
@@ -115,7 +115,7 @@ export function AdminRoomPage () {
 
                         <button
                           type='button'
-                          onClick={() => handleHightlightQuestion(question.id)}
+                          onClick={() => handleToggleHightlightQuestion(question.id, question.isHighlighted)}
                           className={question.isHighlighted ? 'liked' : ''}
                         >
                           <AnswerImg aria-label='Dar destaque à pergunta' />
