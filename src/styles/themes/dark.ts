@@ -8,8 +8,8 @@ export const darkColors: Omit<DefaultTheme, 'toggleTheme'> = {
     textSecondary: '#737380', /* --gray-dark */
     textTertiary: '#0D0D0D', /* --white */
 
-    primary: '#835afd', /* --purple */
-    primaryLight: '#F4F0FF',
+    primary: '#33b330', /* --purple */
+    primaryLight: '#c8ffc7',
 
     danger: '#E73F5D', /* --red-light */
     google: '#ea4335', /* --red */
@@ -23,6 +23,6 @@ export const darkColors: Omit<DefaultTheme, 'toggleTheme'> = {
     backgroundSecondary: '#0D0D0D', /* --black-dark */
     backgroundTertiary: '#141414', /* --black-medium */
 
-    label: '#e559f9' /* --pink */
+    label: '#FFD748' /* --pink */
   }
 }

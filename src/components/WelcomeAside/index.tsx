@@ -23,7 +23,7 @@ export function WelcomeAside() {
     <WelcomeAsideContainer className={isPassedTheWelcomeMessage ? 'passed-welcome-message' : ''}>
       <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
       <strong>Crie salas de Q&amp;A ao-vivo</strong>
-      <p>Tire as dúvidas da sua audiência em tempo-real</p>
+      <p>Tire as dúvidas dos seus alunos em tempo-real</p>
       {!isPassedTheWelcomeMessage && <Button onClick={handlePassWelcomeMessage}>Continuar</Button>}
     </WelcomeAsideContainer>
   )
