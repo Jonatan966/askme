@@ -60,6 +60,8 @@ export const WelcomeAsideContainer = styled.aside`
       margin-top: auto;
 
       display: block;
+
+      color: ${ctx => ctx.theme.colors.textSecondary};
     }
   }
 `
