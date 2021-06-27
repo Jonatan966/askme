@@ -7,6 +7,7 @@ import { UserInfo } from '@components/UserInfo'
 import { ShowAfterLoad } from '@components/ShowAfterLoad'
 import { AppLogo } from '@components/AppLogo'
 import { WelcomeAside } from '@components/WelcomeAside'
+import { ThemeSwitcher } from '@components/ThemeSwitcher'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
 
@@ -76,6 +77,8 @@ export function NewRoomPage () {
               {user && (
                 <UserInfo user={user} />
               )}
+
+              <ThemeSwitcher showLabel/>
             </div>
           </ShowAfterLoad>
         </main>

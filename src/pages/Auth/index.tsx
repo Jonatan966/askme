@@ -4,12 +4,14 @@ import toast from 'react-hot-toast'
 
 import { Button } from '@components/Button'
 import { AppLogo } from '@components/AppLogo'
+import { WelcomeAside } from '@components/WelcomeAside'
+import { ThemeSwitcher } from '@components/ThemeSwitcher'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
 
 import googleIconImg from '@assets/images/google-icon.svg'
+
 import { PageAuthContainer } from './styles'
-import { WelcomeAside } from '@components/WelcomeAside'
 
 export function HomePage () {
   const history = useHistory()
@@ -71,6 +73,8 @@ export function HomePage () {
               Entrar na sala
             </Button>
           </form>
+
+          <ThemeSwitcher showLabel/>
         </div>
       </main>
     </PageAuthContainer>

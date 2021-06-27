@@ -64,7 +64,7 @@ export const PageAuthContainer = styled.div`
 
     }
 
-    .user-info {
+    > button {
       margin-top: 1rem;
     }
   }
