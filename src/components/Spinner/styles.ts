@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components'
+import { darken } from 'polished'
 
 const spinAnimation = keyframes`
   from {
@@ -15,7 +16,7 @@ export const SpinnerContainer = styled.span`
 
   // background: green;
 
-  border: 0.4rem solid #973ba3;
+  border: 0.4rem solid ${ctx => darken(0.2, ctx.theme.colors.primary)};
   border-top: 0.4rem solid ${ctx => ctx.theme.colors.label};
   border-radius: 50%;
 
