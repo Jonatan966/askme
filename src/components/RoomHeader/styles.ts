@@ -66,15 +66,12 @@ export const RoomHeaderContainer = styled.header`
       nav {
         flex-direction: column;
         align-items: stretch;
+        display: none;
+
+        &.opened {
+          display: flex;
+        }
       }
-    }
-
-    input:not(:checked) + .main-content + nav {
-      display: none;
-    }
-
-    input:checked + .main-content + nav {
-      display: flex;
     }
   }
 

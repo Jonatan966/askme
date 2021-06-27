@@ -22,7 +22,6 @@ export function RoomHeader({ roomId, handleOpenConfirmEndRoomModal }: RoomHeader
   return (
     <RoomHeaderContainer>
       <div className='content'>
-        <input type="checkbox" hidden checked={isNavbarVisible} readOnly />
         <div className='main-content'>
           <AppLogo/>
           <ThemeSwitcher/>
@@ -35,7 +34,7 @@ export function RoomHeader({ roomId, handleOpenConfirmEndRoomModal }: RoomHeader
           </Button>
         </div>
 
-        <nav>
+        <nav className={isNavbarVisible ? 'opened' : ''}>
           <RoomCode roomCode={roomId} />
           {handleOpenConfirmEndRoomModal && (
             <Button
