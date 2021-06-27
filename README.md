@@ -8,6 +8,9 @@
 <hr>
 <br>
 
+## 🌐 Link para acesso
+https://letmeask-jonas.web.app/
+
 ## 🧪 Tecnologias
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
