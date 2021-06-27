@@ -7,6 +7,10 @@ export const UserInfoContainer = styled.div`
 
   gap: 1rem;
 
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background: ${ctx => ctx.theme.colors.primary};
+
   img {
     width: 2rem;
     height: 2rem;
@@ -15,7 +19,7 @@ export const UserInfoContainer = styled.div`
 
   span {
     margin-left: 0.5rem;
-    color:${ctx => ctx.theme.colors.textPrimary};
+    color: ${ctx => ctx.theme.colors.backgroundPrimary};
     font-weight: 500;
     font-size: 0.875rem;
   }
