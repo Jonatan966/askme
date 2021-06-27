@@ -6,7 +6,7 @@
 ## 💻 Projeto
 O Askme é perfeito para professores(as) poderem criar salas de Q&A com seus alunos, de forma muito organizada e democrática.
 
-## Funções
+## 🔧 Funcionalidades
 - Criação e remoção de salas
 - Compartilhamento do código da sala
 - Tema claro e escuro
