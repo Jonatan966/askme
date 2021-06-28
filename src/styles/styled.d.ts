@@ -26,6 +26,9 @@ declare module 'styled-components' {
       backgroundTertiary:string;
 
       label:string;
+
+      twitch:string;
+      youtube:string;
     }
 
     toggleTheme: () => void

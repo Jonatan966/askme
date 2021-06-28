@@ -23,6 +23,8 @@ export const darkColors: Omit<DefaultTheme, 'toggleTheme'> = {
     backgroundSecondary: '#0D0D0D', /* --black-dark */
     backgroundTertiary: '#141414', /* --black-medium */
 
-    label: '#FFD748' /* --pink */
+    label: '#FFD748', /* --pink */
+    twitch: '#6441a5',
+    youtube: 'red'
   }
 }
