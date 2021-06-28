@@ -29,7 +29,7 @@ export function RoomPage() {
   const { id: roomId } = useParams<RoomParams>()
   const [newQuestion, setNewQuestion] = useState('')
 
-  const { title, questions, isLoadingRoomInformation } = useRoom(roomId)
+  const { title, questions, transmissionUrl, isLoadingRoomInformation } = useRoom(roomId)
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -78,7 +78,7 @@ export function RoomPage() {
 
       <ShowAfterLoad isLoading={isLoadingRoomInformation}>
         <main>
-          <StreamPlayer url='https://www.youtube.com/watch?v=N_ShEGxWRWA' />
+          <StreamPlayer url={transmissionUrl} />
 
           <div className="room-title">
             <h1>Sala {title}</h1>
