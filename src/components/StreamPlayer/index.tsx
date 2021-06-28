@@ -5,50 +5,49 @@ import { Spinner } from '@components/Spinner'
 
 import { PlayerStatusContainer } from './styles'
 
+type PlayerStates = 'loading' | 'ready' | 'error'
+
 interface StreamPlayerProps {
   url: string;
 }
 
 interface PlayerStatusProps {
-  isLoading?: boolean;
+  playerState?: PlayerStates;
 }
 
 export function StreamPlayer({ url }: StreamPlayerProps) {
-  const [isLoading, setIsLoading] = useState(true)
-  const [isError, setIsError] = useState(false)
+  const [playerState, setPlayerState] = useState<PlayerStates>('loading')
 
   function onPlayerReady(playerProps: ReactPlayer) {
-    setIsLoading(false)
+    setPlayerState('ready')
   }
 
   function onPlayerError() {
-    setIsError(true)
-    setIsLoading(false)
+    setPlayerState('error')
   }
 
   return (
     <>
-      {(isLoading || isError) && <PlayerStatus isLoading={isLoading} />}
+      {(playerState !== 'ready') && <PlayerStatus playerState={playerState} />}
       <ReactPlayer
         url={url}
         width='100%'
         height='25rem'
         style={{
           marginTop: '1rem',
-          display: (isLoading || isError) ? 'none' : 'block'
+          display: playerState === 'ready' ? 'block' : 'none'
         }}
         onError={onPlayerError}
         onReady={onPlayerReady}
-        // playing={true}
       />
     </>
   )
 }
 
-function PlayerStatus({ isLoading } : PlayerStatusProps) {
+function PlayerStatus({ playerState } : PlayerStatusProps) {
   return (
     <PlayerStatusContainer>
-      {isLoading
+      {playerState === 'loading'
         ? <Spinner/>
         : (
             <>
