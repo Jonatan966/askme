@@ -35,6 +35,7 @@ export function useRoom(roomId: string) {
   const { user } = useAuth()
   const [questions, setQuestions] = useState<QuestionType[]>([])
   const [title, setTitle] = useState('')
+  const [transmissionUrl, setTransmissionUrl] = useState('')
   const [isLoadingRoomInformation, setIsLoadingRoomInformation] = useState(true)
 
   const history = useHistory()
@@ -72,6 +73,7 @@ export function useRoom(roomId: string) {
           )
 
         setTitle(databaseRoom.title)
+        setTransmissionUrl(databaseRoom.transmissionUrl)
         setQuestions(filteredQuestions)
         setIsLoadingRoomInformation(false)
       } catch {
@@ -88,6 +90,7 @@ export function useRoom(roomId: string) {
   return {
     questions,
     title,
+    transmissionUrl,
     isLoadingRoomInformation
   }
 }

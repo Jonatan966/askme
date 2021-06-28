@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
 
 import { Button } from '@components/Button'
 import { RoomHeader } from '@components/RoomHeader'
@@ -8,6 +9,7 @@ import { UserInfo } from '@components/UserInfo'
 import { ShowAfterLoad } from '@components/ShowAfterLoad'
 import { CenteredMessage } from '@components/CenteredMessage'
 import { TextareaInput } from '@components/Input/TextareaInput'
+import { StreamPlayer } from '@components/StreamPlayer'
 
 import { useAuth } from '@hooks/useAuth'
 import { useRoom } from '@hooks/useRoom'
@@ -37,8 +39,7 @@ export function RoomPage() {
     }
 
     if (!user) {
-      // TODO: utilizar o react-hot-toast
-      throw new Error('You must be logged in')
+      return toast.error('Você deve fazer login para enviar uma pergunta')
     }
 
     const question = {
@@ -77,6 +78,8 @@ export function RoomPage() {
 
       <ShowAfterLoad isLoading={isLoadingRoomInformation}>
         <main>
+          <StreamPlayer url='https://www.youtube.com/watch?v=N_ShEGxWRWA' />
+
           <div className="room-title">
             <h1>Sala {title}</h1>
             {questions.length > 0 && (
