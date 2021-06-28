@@ -6,6 +6,7 @@ import { Button } from '@components/Button'
 import { AppLogo } from '@components/AppLogo'
 import { WelcomeAside } from '@components/WelcomeAside'
 import { ThemeSwitcher } from '@components/ThemeSwitcher'
+import { TextInput } from '@components/Input/TextInput'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
 
@@ -63,12 +64,13 @@ export function HomePage () {
           <span className='separator'>Ou entre em uma sala</span>
 
           <form onSubmit={handleJoinRoom}>
-            <input
+            <TextInput
               type="text"
               placeholder='Digite o código da sala'
               onChange={event => setRoomCode(event.target.value)}
               value={roomCode}
             />
+
             <Button type="submit" disabled={!roomCode}>
               Entrar na sala
             </Button>

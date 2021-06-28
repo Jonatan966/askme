@@ -35,15 +35,6 @@ export const PageAuthContainer = styled.div`
     }
 
     form {
-      input {
-        height: 3rem;
-        border-radius: 0.5rem;
-        padding: 0 1rem;
-        background: ${ctx => ctx.theme.colors.textTertiary};
-        color: ${ctx => ctx.theme.colors.textPrimary};
-        border: 1px solid ${ctx => ctx.theme.colors.detailsSecondary};
-      }
-
       button {
         margin-top: 1rem;
       }

@@ -7,6 +7,7 @@ import { Question } from '@components/Question'
 import { UserInfo } from '@components/UserInfo'
 import { ShowAfterLoad } from '@components/ShowAfterLoad'
 import { CenteredMessage } from '@components/CenteredMessage'
+import { TextareaInput } from '@components/Input/TextareaInput'
 
 import { useAuth } from '@hooks/useAuth'
 import { useRoom } from '@hooks/useRoom'
@@ -84,7 +85,7 @@ export function RoomPage() {
           </div>
 
           <form onSubmit={handleSendQuestion}>
-            <textarea
+            <TextareaInput
               placeholder='O que você quer perguntar?'
               onChange={event => setNewQuestion(event.target.value)}
               value={newQuestion}

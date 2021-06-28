@@ -8,6 +8,7 @@ import { ShowAfterLoad } from '@components/ShowAfterLoad'
 import { AppLogo } from '@components/AppLogo'
 import { WelcomeAside } from '@components/WelcomeAside'
 import { ThemeSwitcher } from '@components/ThemeSwitcher'
+import { TextInput } from '@components/Input/TextInput'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
 
@@ -58,7 +59,7 @@ export function NewRoomPage () {
               <h2>Criar uma nova sala</h2>
 
               <form onSubmit={handleCreateRoom}>
-                <input
+                <TextInput
                   type="text"
                   placeholder='Nome da sala'
                   value={roomName}
