@@ -35,9 +35,10 @@ export const PageAuthContainer = styled.div`
     }
 
     form {
-      button {
-        margin-top: 1rem;
-      }
+      display: flex;
+      flex-direction: column;
+      
+      gap: 1rem;
 
       button, input {
         width: 100%;

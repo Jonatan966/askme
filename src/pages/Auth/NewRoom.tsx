@@ -1,6 +1,7 @@
 import toast from 'react-hot-toast'
-import { FormEvent, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 
 import { Button } from '@components/Button'
 import { UserInfo } from '@components/UserInfo'
@@ -9,17 +10,30 @@ import { AppLogo } from '@components/AppLogo'
 import { WelcomeAside } from '@components/WelcomeAside'
 import { ThemeSwitcher } from '@components/ThemeSwitcher'
 import { TextInput } from '@components/Input/TextInput'
+import { StreamSelectorInput } from '@components/Input/StreamSelectorInput'
 import { database } from '@services/firebase'
 import { useAuth } from '@hooks/useAuth'
 
 import { PageAuthContainer } from './styles'
 
+interface RoomFormInformations {
+  roomName: string;
+  transmissionUrl: string;
+}
+
 export function NewRoomPage () {
   const { user, isLoadingUserInformation } = useAuth()
-  const [roomName, setRoomName] = useState('')
+  const { register, handleSubmit, setValue } = useForm()
+
+  const handleTransmissionUrlChange = (newValue: string) => setValue('transmissionUrl', newValue)
+
   const [isCreatingRoom, setIsCreatingRoom] = useState(false)
 
   const history = useHistory()
+
+  useEffect(() => {
+    register('transmissionUrl')
+  }, [])
 
   useEffect(() => {
     if (!isLoadingUserInformation && !user) {
@@ -27,8 +41,7 @@ export function NewRoomPage () {
     }
   }, [isLoadingUserInformation, user])
 
-  async function handleCreateRoom (event: FormEvent) {
-    event.preventDefault()
+  async function handleCreateRoom ({ roomName, transmissionUrl }: RoomFormInformations) {
     setIsCreatingRoom(true)
 
     try {
@@ -36,6 +49,7 @@ export function NewRoomPage () {
 
       const firebaseRoom = await roomRef.push({
         title: roomName,
+        transmissionUrl,
         authorId: user?.id
       })
 
@@ -58,14 +72,16 @@ export function NewRoomPage () {
 
               <h2>Criar uma nova sala</h2>
 
-              <form onSubmit={handleCreateRoom}>
+              <form onSubmit={handleSubmit(handleCreateRoom)}>
                 <TextInput
+                  {...register('roomName')}
                   type="text"
                   placeholder='Nome da sala'
-                  value={roomName}
-                  onChange={event => setRoomName(event.target.value)}
+                  required
                 />
-                <Button type="submit" disabled={!roomName.trim()} isLoading={isCreatingRoom}>
+                <StreamSelectorInput onChange={handleTransmissionUrlChange} />
+
+                <Button type="submit" /* disabled={!roomName.trim()} */ isLoading={isCreatingRoom}>
                   Criar sala
                 </Button>
               </form>
