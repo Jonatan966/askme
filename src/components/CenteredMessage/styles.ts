@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const CenteredMessageContainer = styled.div`
   margin: auto;
+  padding: 2rem 0;
 
   display: flex;
   flex-direction: column;
