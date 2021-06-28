@@ -1,16 +1,16 @@
 import { Toaster } from 'react-hot-toast'
 import { useTheme } from 'styled-components'
 
-import './styles.scss'
-
 export function AppToast() {
-  const { currentTheme } = useTheme()
+  const { colors } = useTheme()
+  const AppToastStyles = {
+    background: colors.backgroundPrimary,
+    color: colors.textPrimary
+  }
 
   return (
-    <Toaster toastOptions={
-      currentTheme === 'dark'
-        ? { className: 'app-toast-dark' }
-        : {}
-    } />
+    <Toaster toastOptions={{
+      style: AppToastStyles
+    }} />
   )
 }
